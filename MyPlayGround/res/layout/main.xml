@@ -24,10 +24,16 @@
      	    android:text="@string/score" />
 
      	<Button
-     	    android:id="@+id/newGameButton"
+     	    android:id="@+id/moveLeftButton"
      	    android:layout_width="wrap_content"
      	    android:layout_height="wrap_content"
-     	    android:text="@string/newgame" />
+     	    android:text="@string/moveLeft" />
+
+     	<Button
+     	    android:id="@+id/moveRightButton"
+     	    android:layout_width="wrap_content"
+     	    android:layout_height="wrap_content"
+     	    android:text="@string/moveRight" />
 
  	</LinearLayout>  
 </LinearLayout>  
