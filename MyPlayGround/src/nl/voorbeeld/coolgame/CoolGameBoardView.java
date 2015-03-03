@@ -39,20 +39,23 @@ public class CoolGameBoardView extends GameBoardView {
 	 * Loads all images that will be used for the game.
 	 */
 	private void initGameView() {
-		Log.d(TAG, "Loading all images");
+		if (!isInEditMode()) {
+			Log.d(TAG, "Loading all images");
 
-		SpriteCache spriteCache = SpriteCache.getInstance(); 
-		spriteCache.setContext(this.getContext());		
+			SpriteCache spriteCache = SpriteCache.getInstance();
+			spriteCache.setContext(this.getContext());
 
-		// Load the 'empty' cell bitmap and tell the tile view that this is the
-		// image to use for cells without GameObject
-		spriteCache.loadTile("empty", R.drawable.cell);
-		setEmptyTile("empty");
+			// Load the 'empty' cell bitmap and tell the tile view that this is
+			// the
+			// image to use for cells without GameObject
+			spriteCache.loadTile("empty", R.drawable.cell);
+			setEmptyTile("empty");
 
-		// Load the images for the GameObjects
-		spriteCache.loadTile(Leaf.LEAF_IMAGE, R.drawable.leaf);
-		spriteCache.loadTile(Rock.ROCK_IMAGE, R.drawable.rock);
-		spriteCache.loadTile(Rock.RED_ROCK_IMAGE, R.drawable.rock2);
-		spriteCache.loadTile(Wombat.WOMBAT_IMAGE, R.drawable.wombat);
+			// Load the images for the GameObjects
+			spriteCache.loadTile(Leaf.LEAF_IMAGE, R.drawable.leaf);
+			spriteCache.loadTile(Rock.ROCK_IMAGE, R.drawable.rock);
+			spriteCache.loadTile(Rock.RED_ROCK_IMAGE, R.drawable.rock2);
+			spriteCache.loadTile(Wombat.WOMBAT_IMAGE, R.drawable.wombat);
+		}
 	}
 }
