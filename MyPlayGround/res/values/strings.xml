@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SpeelveldDemo</string>
-    <string name="newgame">New Game</string>
+    <string name="moveRight">-&gt;</string>
+    <string name="moveLeft">&lt;-</string>
     <string name="score">Score: </string>
   </resources>
