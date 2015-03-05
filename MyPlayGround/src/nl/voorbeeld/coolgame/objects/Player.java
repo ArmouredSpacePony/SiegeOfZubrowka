@@ -55,7 +55,7 @@ public class Player extends GameObject {
 	}
 	
 	pulic void moveLeft(){
-		Log.d(CoolGame.TAG, "Touched Player");
+		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the left
 		int newPosX = getPositionX() - 1;
@@ -72,7 +72,7 @@ public class Player extends GameObject {
 	}
 	
 	pulic void moveRight(){
-		Log.d(CoolGame.TAG, "Touched Player");
+		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the right
 		int newPosX = getPositionX() + 1;
