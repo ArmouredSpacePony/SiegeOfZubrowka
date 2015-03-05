@@ -4,7 +4,8 @@ import nl.saxion.act.playground.model.Game;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.voorbeeld.coolgame.objects.Leaf;
 import nl.voorbeeld.coolgame.objects.Rock;
-import nl.voorbeeld.coolgame.objects.Wombat;
+import nl.voorbeeld.coolgame.objects.Player;
+
 
 /**
  * Awesome game for the Speelveld-project.
@@ -58,7 +59,7 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(new Wombat(), 5, 0);
+		board.addGameObject(new Player(), 5, 0);
 
 
 		// Redraw the game view
