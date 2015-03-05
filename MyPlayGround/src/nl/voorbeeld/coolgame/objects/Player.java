@@ -10,7 +10,7 @@ import nl.voorbeeld.coolgame.CoolGame;
  * 
  * @author Paul de Groot
  */
-public class Wombat extends GameObject {
+public class Player extends GameObject {
 	public static final String WOMBAT_IMAGE = "Wombat";
 
 	/** Returns the ImageId of the image to show. */
@@ -22,7 +22,7 @@ public class Wombat extends GameObject {
 	/** Called when the user touched this wombat. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Touched wombat");
+		Log.d(CoolGame.TAG, "Touched Player");
 
 		// Wombats always move a square to the right
 		int newPosX = getPositionX() + 1;
@@ -50,6 +50,40 @@ public class Wombat extends GameObject {
 		}
 
 		// Move wombat to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
+	}
+	
+	pulic void moveLeft(){
+		Log.d(CoolGame.TAG, "Touched Player");
+
+		// player moves to the left
+		int newPosX = getPositionX() - 1;
+		int newPosY = getPositionY();
+
+		// If new position is over the edge of the board, do nothing
+		if (newPosX <0) {
+			return;
+		}
+		
+		// Move player to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
+	}
+	
+	pulic void moveRight(){
+		Log.d(CoolGame.TAG, "Touched Player");
+
+		// player moves to the right
+		int newPosX = getPositionX() + 1;
+		int newPosY = getPositionY();
+
+		// If new position is over the edge of the board, do nothing
+		if (newPosX <9) {
+			return;
+		}
+		
+		// Move player to the new position and redraw the app
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
