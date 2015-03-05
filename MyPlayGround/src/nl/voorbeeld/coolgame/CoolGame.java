@@ -58,20 +58,8 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(new Wombat(), 0, 5);
+		board.addGameObject(new Wombat(), 5, 0);
 
-		// Add some rocks
-		board.addGameObject(new Rock(false), 3, 3);
-		board.addGameObject(new Rock(false), 2, 7);
-		board.addGameObject(new Rock(true),  8, 5);
-		board.addGameObject(new Rock(true),  1, 4);
-		board.addGameObject(new Rock(false), 6, 10);
-
-		// Add some leafs
-		board.addGameObject(new Leaf(), 7, 7);
-		board.addGameObject(new Leaf(), 3, 6);
-		board.addGameObject(new Leaf(), 4, 7);
-		board.addGameObject(new Leaf(), 1, 9);
 
 		// Redraw the game view
 		board.updateView();
