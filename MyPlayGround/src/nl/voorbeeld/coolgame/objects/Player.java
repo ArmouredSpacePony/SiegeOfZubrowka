@@ -54,7 +54,7 @@ public class Player extends GameObject {
 		gameBoard.updateView();
 	}
 	
-	pulic void moveLeft(){
+	pulic void moveLeft(GameBoard gameBoard){
 		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the left
@@ -71,7 +71,7 @@ public class Player extends GameObject {
 		gameBoard.updateView();
 	}
 	
-	pulic void moveRight(){
+	pulic void moveRight(GameBoard gameBoard){
 		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the right
