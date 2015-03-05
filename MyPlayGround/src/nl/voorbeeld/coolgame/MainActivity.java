@@ -1,6 +1,7 @@
 package nl.voorbeeld.coolgame;
 
 import nl.saxion.act.playground.R;
+import nl.voorbeeld.coolgame.objects.Player;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -62,6 +63,8 @@ public class MainActivity extends Activity {
 	 * Install a listener to the 'New game'-button so that it starts a new
 	 * game when clicked.
 	 */
+	
+	
 	private void registerNewGameButton() {
 		// Find the 'New Game'-button in the activity
 		final Button button1 = (Button) findViewById(R.id.newGameButton);
@@ -75,28 +78,29 @@ public class MainActivity extends Activity {
 		});
 	}
 	
+	
 	private void moveLeftButton() {
 		// Find the 'New Game'-button in the activity
-		final Button button1 = (Button) findViewById(R.id.newGameButton);
+		final Button button1 = (Button) findViewById(R.id.moveLeftButton);
 		
 		// Add a click listener to the button that calls initNewGame()
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Player.moveLeft(game.getGameBoard)
+				Player.moveLeft(game.getGameBoard());
 			}
 		});
 	}
 	
 	private void moveRightButton() {
 		// Find the 'New Game'-button in the activity
-		final Button button1 = (Button) findViewById(R.id.newGameButton);
+		final Button button1 = (Button) findViewById(R.id.moveRightButton);
 		
 		// Add a click listener to the button that calls initNewGame()
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Player.moveRight(game.getGameBoard)
+				Player.moveRight(game.getGameBoard());
 			}
 		});
 	}
