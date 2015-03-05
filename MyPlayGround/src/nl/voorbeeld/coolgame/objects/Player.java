@@ -22,7 +22,7 @@ public class Player extends GameObject {
 	/** Called when the user touched this wombat. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Touched Player");
+		Log.d(CoolGame.TAG, "Touched wombat");
 
 		// Wombats always move a square to the right
 		int newPosX = getPositionX() + 1;
@@ -53,8 +53,8 @@ public class Player extends GameObject {
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
-	
-	pulic void moveLeft(GameBoard gameBoard){
+
+	public void moveLeft(GameBoard gameBoard) {
 		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the left
@@ -62,16 +62,16 @@ public class Player extends GameObject {
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
-		if (newPosX <0) {
+		if (newPosX < 0) {
 			return;
 		}
-		
+
 		// Move player to the new position and redraw the app
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
-	
-	pulic void moveRight(GameBoard gameBoard){
+
+	public void moveRight(GameBoard gameBoard) {
 		Log.d(CoolGame.TAG, "Moved Player");
 
 		// player moves to the right
@@ -79,12 +79,13 @@ public class Player extends GameObject {
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
-		if (newPosX <9) {
+		if (newPosX < 9) {
 			return;
 		}
-		
+
 		// Move player to the new position and redraw the app
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
+
 }
