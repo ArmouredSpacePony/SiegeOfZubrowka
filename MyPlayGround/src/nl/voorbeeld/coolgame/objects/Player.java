@@ -79,7 +79,7 @@ public class Player extends GameObject {
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
-		if (newPosX < 9) {
+		if (newPosX > 8) {
 			return;
 		}
 
