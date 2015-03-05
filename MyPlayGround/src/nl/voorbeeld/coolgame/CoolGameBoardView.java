@@ -5,7 +5,7 @@ import nl.saxion.act.playground.view.GameBoardView;
 import nl.saxion.act.playground.view.SpriteCache;
 import nl.voorbeeld.coolgame.objects.Leaf;
 import nl.voorbeeld.coolgame.objects.Rock;
-import nl.voorbeeld.coolgame.objects.Wombat;
+import nl.voorbeeld.coolgame.objects.Player;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -55,7 +55,7 @@ public class CoolGameBoardView extends GameBoardView {
 			spriteCache.loadTile(Leaf.LEAF_IMAGE, R.drawable.leaf);
 			spriteCache.loadTile(Rock.ROCK_IMAGE, R.drawable.rock);
 			spriteCache.loadTile(Rock.RED_ROCK_IMAGE, R.drawable.rock2);
-			spriteCache.loadTile(Wombat.WOMBAT_IMAGE, R.drawable.wombat);
+			spriteCache.loadTile(Player.WOMBAT_IMAGE, R.drawable.wombat);
 		}
 	}
 }
