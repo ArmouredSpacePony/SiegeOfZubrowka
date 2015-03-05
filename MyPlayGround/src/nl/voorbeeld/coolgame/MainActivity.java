@@ -74,5 +74,31 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+	
+	private void moveLeftButton() {
+		// Find the 'New Game'-button in the activity
+		final Button button1 = (Button) findViewById(R.id.newGameButton);
+		
+		// Add a click listener to the button that calls initNewGame()
+		button1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Player.moveLeft(game.getGameBoard)
+			}
+		});
+	}
+	
+	private void moveRightButton() {
+		// Find the 'New Game'-button in the activity
+		final Button button1 = (Button) findViewById(R.id.newGameButton);
+		
+		// Add a click listener to the button that calls initNewGame()
+		button1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Player.moveRight(game.getGameBoard)
+			}
+		});
+	}
 
 }
