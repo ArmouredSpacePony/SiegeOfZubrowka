@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import nl.voorbeeld.coolgame.CoolGame;
 
 /**
  * The main activity.
@@ -36,11 +37,13 @@ public class MainActivity extends Activity {
 		game = new CoolGame(this);
 
 		// Do something when user clicks new game
-		registerNewGameButton();
-
+		//registerNewGameButton();
+		
 		// Tell user to start the game
 		Toast.makeText(getApplicationContext(), "Lets start",
 				Toast.LENGTH_SHORT).show();
+		moveLeftButton();
+		moveRightButton();
 	}
 
 	/**
@@ -65,7 +68,7 @@ public class MainActivity extends Activity {
 	 */
 	
 	
-	private void registerNewGameButton() {
+	/*private void registerNewGameButton() {
 		// Find the 'New Game'-button in the activity
 		final Button button1 = (Button) findViewById(R.id.newGameButton);
 		
@@ -76,7 +79,7 @@ public class MainActivity extends Activity {
 				game.initNewGame();
 			}
 		});
-	}
+	}*/
 	
 	
 	private void moveLeftButton() {
@@ -87,7 +90,7 @@ public class MainActivity extends Activity {
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Player.moveLeft(game.getGameBoard());
+				game.getPlayer().moveLeft(game.getGameBoard());
 			}
 		});
 	}
@@ -100,7 +103,7 @@ public class MainActivity extends Activity {
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Player.moveRight(game.getGameBoard());
+				game.getPlayer().moveRight(game.getGameBoard());
 			}
 		});
 	}
