@@ -41,7 +41,7 @@ public class Leaf extends GameObject {
 
 			// Leafs can't move through rocks or wombats
 			if ((objectAtNewPos instanceof Rock) || 
-			    (objectAtNewPos instanceof Wombat)){
+			    (objectAtNewPos instanceof Player)){
 				return;
 			}
 		}
