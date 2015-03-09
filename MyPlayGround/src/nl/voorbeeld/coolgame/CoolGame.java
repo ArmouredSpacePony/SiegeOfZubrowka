@@ -60,6 +60,13 @@ public class CoolGame extends Game {
 
 		// Add a player object
 		board.addGameObject(new Player(), 5, 0);
+		/** init delay plus first row
+	*	start looper : Looper.prepare(); en open handler mHandler = new Handler() { //import runnable java.lang.Runnable
+	*	add enemy to row with delay (ms) // postDelayed(Runnable r, long delayMillis)
+	* 	close looper
+	* 	update view
+		
+	*/	
 
 
 		// Redraw the game view
