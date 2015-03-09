@@ -63,7 +63,7 @@ public class CoolGame extends Game {
 		/** init delay plus first row
 	*	start looper : Looper.prepare(); en open handler mHandler = new Handler() { //import runnable java.lang.Runnable
 	*	add enemy to row with delay (ms) // postDelayed(Runnable r, long delayMillis)
-	* 	close looper
+
 	* 	update view
 		
 	*/	
