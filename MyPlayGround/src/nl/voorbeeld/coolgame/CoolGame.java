@@ -1,5 +1,6 @@
 package nl.voorbeeld.coolgame;
 
+import android.widget.Toast;
 import nl.saxion.act.playground.model.Game;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.voorbeeld.coolgame.objects.Leaf;
@@ -13,6 +14,12 @@ import nl.voorbeeld.coolgame.objects.Player;
  * @author Paul de Groot
  */
 public class CoolGame extends Game {
+	
+	
+	
+	private Player player= new Player();
+	private boolean gameOver= false;
+	
 	/** Tag used for log messages */
 	public static final String TAG = "CoolGame";
 
@@ -45,6 +52,10 @@ public class CoolGame extends Game {
 		// Set size of the view to that of the game board
 		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
 	}
+	
+	public Player getPlayer(){
+		return player;
+	}
 
 	/**
 	 * Starts a new game.
@@ -59,7 +70,10 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(new Player(), 5, 0);
+		board.addGameObject(player, 4, 17);
+		
+		
+		gameOver=false;
 
 
 		// Redraw the game view
@@ -72,5 +86,18 @@ public class CoolGame extends Game {
 	public void increaseScore() {
 		score++;
 		activity.updateScoreLabel(score);
+	}
+	
+	public void GameOver(){
+		getGameBoard().removeAllObjects();
+		//TODO stop timer
+		gameOver = true;
+		
+		Toast.makeText(activity.getApplicationContext(), "GAME OVER",
+				Toast.LENGTH_LONG).show();
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
 	}
 }
