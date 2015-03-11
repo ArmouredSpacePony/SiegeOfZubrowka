@@ -83,7 +83,7 @@ public class CoolGame extends Game {
 	/**
 	 * Called by Wombat if it ate a leaf. Increases the score.
 	 */
-	public void increaseScore(int punten) {
+	public void changeScore(int punten) {
 		score= score+punten;
 		activity.updateScoreLabel(score);
 	}
