@@ -64,7 +64,7 @@ public class CoolGame extends Game {
 	 @Override
 	final Runnable spawn = new Runnable() {
 		public void run() {
-			board.addGameObject(new enemy(), X, Y);
+		spawnEnemies();
 		}
 	}
 	_stop = new Boolean;
