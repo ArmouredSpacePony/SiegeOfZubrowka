@@ -1,82 +1,91 @@
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.coolgame.objects;
 
-import nl.saxion.act.playground.model.Game;
+import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
-import nl.voorbeeld.coolgame.objects.Player;
-
+import nl.saxion.act.playground.model.GameObject;
+import nl.voorbeeld.coolgame.CoolGame;
 
 /**
- * Awesome game for the Speelveld-project.
+ * The Wombat is our 'player object'. It should try to eat leafs.
  * 
  * @author Paul de Groot
  */
-public class CoolGame extends Game {
-	Player player = new Player();
-	/**
-	 * @return the player
-	 */
-	public Player getPlayer() {
-		return player;
+public class Player extends GameObject {
+	public static final String WOMBAT_IMAGE = "Wombat";
+
+	/** Returns the ImageId of the image to show. */
+	@Override
+	public String getImageId() {
+		return WOMBAT_IMAGE;
 	}
 
-	/** Tag used for log messages */
-	public static final String TAG = "CoolGame";
+	/** Called when the user touched this wombat. */
+	@Override
+	public void onTouched(GameBoard gameBoard) {
+		Log.d(CoolGame.TAG, "Touched wombat");
 
-	/** Reference to the main activity, so some labels can be updated. */
-	private MainActivity activity;
-	
-	/** The number of leafs eaten. */
-	private int score;
+		// Wombats always move a square to the right
+		int newPosX = getPositionX() + 1;
+		int newPosY = getPositionY();
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param activity  The main activity
-	 */
-	public CoolGame(MainActivity activity) {
-		// Create a new game board and couple it to this game
-		super(new CoolGameBoard());
-		
-		// Store reference to the main activity
-		this.activity = activity;
+		// If new position is over the edge of the board, do nothing
+		if (newPosX >= gameBoard.getWidth()) {
+			return;
+		}
 
-		// Reset the game
-		initNewGame();
+		// Check if there is a object on the new position
+		GameObject objectAtNewPos = gameBoard.getObject(newPosX, newPosY);
+		if (objectAtNewPos != null) {
 
-		// Tell the game board view which game board to show
-		CoolGameBoardView gameView = activity.getGameBoardView();
-		GameBoard gameBoard = getGameBoard();
-		gameView.setGameBoard(gameBoard);
-		
-		// Set size of the view to that of the game board
-		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
+			// Wombats can't move through rocks
+			if (objectAtNewPos instanceof Rock) {
+				return;
+			}
+
+			// Caught a leaf? Score!
+			if (objectAtNewPos instanceof Leaf) {
+				gameBoard.removeObject(objectAtNewPos);
+				((CoolGame) gameBoard.getGame()).changeScore(1);
+			}
+		}
+
+		// Move wombat to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
 	}
 
-	/**
-	 * Starts a new game.
-	 * Resets the score and places all objects in the right place.
-	 */
-	public void initNewGame() {
-		// Set the score and update the label
-		score = 0;
-		activity.updateScoreLabel(score);
+	public void moveLeft(GameBoard gameBoard) {
+		Log.d(CoolGame.TAG, "Moved Player");
 
-		GameBoard board = getGameBoard();
-		board.removeAllObjects();
+		// player moves to the left
+		int newPosX = getPositionX() - 1;
+		int newPosY = getPositionY();
 
-		// Add a player object
-		board.addGameObject(player, 4, 17);
+		// If new position is over the edge of the board, do nothing
+		if (newPosX < 0) {
+			return;
+		}
 
-
-		// Redraw the game view
-		board.updateView();
+		// Move player to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
 	}
 
-	/**
-	 * Called by Wombat if it ate a leaf. Increases the score.
-	 */
-	public void increaseScore() {
-		score++;
-		activity.updateScoreLabel(score);
+	public void moveRight(GameBoard gameBoard) {
+		Log.d(CoolGame.TAG, "Moved Player");
+
+		// player moves to the right
+		int newPosX = getPositionX() + 1;
+		int newPosY = getPositionY();
+
+		// If new position is over the edge of the board, do nothing
+		if (newPosX > 8) {
+			return;
+		}
+
+		// Move player to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
 	}
+
 }
