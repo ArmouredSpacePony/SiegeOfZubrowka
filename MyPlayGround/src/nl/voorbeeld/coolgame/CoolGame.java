@@ -70,7 +70,7 @@ public class CoolGame extends Game {
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(player, 4, 17);
+		board.addGameObject(player, 4, getGameBoard().getHeight()-1);
 		
 		
 		gameOver=false;
@@ -83,8 +83,8 @@ public class CoolGame extends Game {
 	/**
 	 * Called by Wombat if it ate a leaf. Increases the score.
 	 */
-	public void increaseScore() {
-		score++;
+	public void increaseScore(int punten) {
+		score= score+punten;
 		activity.updateScoreLabel(score);
 	}
 	
