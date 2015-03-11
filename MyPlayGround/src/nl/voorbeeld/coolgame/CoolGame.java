@@ -61,8 +61,21 @@ public class CoolGame extends Game {
 		// Add a player object
 		board.addGameObject(new Player(), 5, 0);
 		/** init delay plus first row
-	*	start looper : Looper.prepare(); en open handler mHandler = new Handler() { //import runnable java.lang.Runnable
+	*	start looper :mHandler = new Handler(Looper.getMainLooper()) { //import runnable java.lang.Runnable
 	*	add enemy to row with delay (ms) // postDelayed(Runnable r, long delayMillis)
+
+		handler = new Handler();
+		_stop = new Boolean;
+		final Runnable r = new Runnable() {
+			public void run() {
+        			tv.append("Hello World");
+        	
+        	
+        		if(!_stop) handler.postDelayed(this, 1000)	handler.postDelayed(this, 1000);
+    				}
+			};
+
+handler.postDelayed(r, 1000);
 
 	* 	update view
 		
