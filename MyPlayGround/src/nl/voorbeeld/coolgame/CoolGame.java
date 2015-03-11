@@ -12,7 +12,7 @@ import nl.voorbeeld.coolgame.objects.Player;
  * 
  * @author Paul de Groot
  */
-public class CoolGame extends Game {
+public class CoolGame extends Game implements Runnable {
 	/** Tag used for log messages */
 	public static final String TAG = "CoolGame";
 
@@ -50,6 +50,13 @@ public class CoolGame extends Game {
 	 * Starts a new game.
 	 * Resets the score and places all objects in the right place.
 	 */
+	@Override
+	final Runnable spawn = new Runnable() {
+		public void run() {
+			board.addGameObject(new enemy(), X, Y);
+		}
+	}
+	_stop = new Boolean;
 	public void initNewGame() {
 		// Set the score and update the label
 		score = 0;
@@ -60,27 +67,14 @@ public class CoolGame extends Game {
 
 		// Add a player object
 		board.addGameObject(new Player(), 5, 0);
-		/** init delay plus first row
-	*	start looper :mHandler = new Handler(Looper.getMainLooper()) { //import runnable java.lang.Runnable
-	*	add enemy to row with delay (ms) // postDelayed(Runnable r, long delayMillis)
-
-		handler = new Handler();
-		_stop = new Boolean;
-		final Runnable r = new Runnable() {
-			public void run() {
-        			tv.append("Hello World");
-        	
-        	
-        		if(!_stop) handler.postDelayed(this, 1000)	handler.postDelayed(this, 1000);
-    				}
-			};
-
-handler.postDelayed(r, 1000);
-
-	* 	update view
-		
-	*/	
-
+		// init delay plus first row  //import runnable java.lang.Runnable
+		mHandler = new Handler(Looper.getMainLooper()) {
+			while(!_stop){ postAtTime(Runnable enemy.run, long 1000);//maybe no delay for movement?
+				postAtTime(Runnable spawn, long 1000);
+			
+    				} 
+    			 removeCallbacks (Runnable enemy.run);
+    			removeCallbacks (Runnable Coolgame.run);
 
 		// Redraw the game view
 		board.updateView();
