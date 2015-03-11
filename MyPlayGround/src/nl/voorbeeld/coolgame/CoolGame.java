@@ -61,20 +61,32 @@ public class CoolGame extends Game {
 	 * Starts a new game.
 	 * Resets the score and places all objects in the right place.
 	 */
+	 @Override
+	final Runnable spawn = new Runnable() {
+		public void run() {
+			board.addGameObject(new enemy(), X, Y);
+		}
+	}
+	_stop = new Boolean;
 	public void initNewGame() {
 		// Set the score and update the label
 		score = 0;
 		activity.updateScoreLabel(score);
+		gameOver=false;
 
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
 
 		// Add a player object
-		board.addGameObject(player, 4, getGameBoard().getHeight()-1);
-		
-		
-		gameOver=false;
-
+		board.addGameObject(new Player(), 5, 0);
+		// init delay plus first row  //import runnable java.lang.Runnable
+		mHandler = new Handler(Looper.getMainLooper()) {
+			while(!_stop){ postAtTime(Runnable enemy.run, long 1000);//maybe no delay for movement?
+				postAtTime(Runnable spawn, long 1000);
+			
+    				} 
+    			 removeCallbacks (Runnable enemy.run);
+    			removeCallbacks (Runnable Coolgame.run);
 
 		// Redraw the game view
 		board.updateView();
