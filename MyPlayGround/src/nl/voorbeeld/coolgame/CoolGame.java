@@ -101,3 +101,4 @@ public class CoolGame extends Game {
 		return gameOver;
 	}
 }
+//dimitri faalt
