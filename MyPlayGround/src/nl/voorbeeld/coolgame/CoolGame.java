@@ -104,6 +104,7 @@ public class CoolGame extends Game {
 		getGameBoard().removeAllObjects();
 		//TODO stop timer
 		gameOver = true;
+		activity.getGameBoardView().setBackgroundResource(R.drawable.gameoverscreen);
 		
 		Toast.makeText(activity.getApplicationContext(), "GAME OVER",
 				Toast.LENGTH_LONG).show();
