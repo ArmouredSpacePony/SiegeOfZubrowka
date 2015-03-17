@@ -61,8 +61,9 @@ public class CoolGame extends Game {
 	 * Starts a new game.
 	 * Resets the score and places all objects in the right place.
 	 */
+	 
+	 final Runnable spawn = new Runnable() {
 	 @Override
-	final Runnable spawn = new Runnable() {
 		public void run() {
 		spawnEnemies();
 		}
