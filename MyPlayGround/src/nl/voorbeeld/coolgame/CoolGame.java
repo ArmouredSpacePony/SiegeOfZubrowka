@@ -4,7 +4,7 @@ import android.widget.Toast;
 import nl.saxion.act.playground.model.Game;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.voorbeeld.coolgame.objects.Leaf;
-import nl.voorbeeld.coolgame.objects.Rock;
+import nl.voorbeeld.coolgame.objects.Enemy;
 import nl.voorbeeld.coolgame.objects.Player;
 
 
@@ -29,6 +29,10 @@ public class CoolGame extends Game {
 	/** The number of leafs eaten. */
 	private int score;
 
+	private final int MAX_ENEMIES_ON_GAMEBOARD = 8;
+	public boolean _stop=false;
+	private int enemiesToSpawn;
+	
 	/**
 	 * Constructor.
 	 * 
@@ -101,7 +105,7 @@ public class CoolGame extends Game {
 		activity.updateScoreLabel(score);
 	}
 	
-	public void GameOver(){
+	public void gameOver(){
 		getGameBoard().removeAllObjects();
 		//TODO stop timer
 		gameOver = true;
@@ -111,6 +115,26 @@ public class CoolGame extends Game {
 				Toast.LENGTH_LONG).show();
 	}
 
+	public void spawnEnemies() {
+		GameBoard board = getGameBoard();
+		int days = 4;
+		enemiesToSpawn = (int) (12 + 3.35 * days * 3.5);
+		int enemiesLeft = 5;
+		while (enemiesLeft > 1) {
+			Random r = new Random();
+			int x = r.nextInt(8);
+			int y = 0;
+			GameObject objectAtNewPos = gameBoard.getObject(x, y);
+			if (objectAtNewPos != null) {
+
+			}else{
+				board.addGameObject(new Enemy(), x, y);
+
+				enemiesLeft--;
+			}
+		}
+
+	}
 	public boolean isGameOver() {
 		return gameOver;
 	}
