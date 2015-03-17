@@ -111,5 +111,9 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+	
+	public void beginActivity(Intent intent){
+		startActivity(intent);
+	}
 
 }
