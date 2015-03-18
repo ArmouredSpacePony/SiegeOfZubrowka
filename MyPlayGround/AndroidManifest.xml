@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="nl.voorbeeld.coolgame.GameOverActivity"
+            android:label="@string/title_activity_gameover" >
+        </activity>
     </application>
 
 </manifest>
