@@ -101,14 +101,14 @@ public class CoolGame extends Game {
 		activity.updateScoreLabel(score);
 	}
 	
-	public void GameOver(){
+	public void gameOver(){
 		getGameBoard().removeAllObjects();
 		//TODO stop timer
 		gameOver = true;
-		activity.getGameBoardView().setBackgroundResource(R.drawable.gameoverscreen);
+		Intent intent = new Intent (activity , GameOverActivity.class);
 		
-		Toast.makeText(activity.getApplicationContext(), "GAME OVER",
-				Toast.LENGTH_LONG).show();
+		activity.beginActivity(intent);
+
 	}
 
 	public boolean isGameOver() {

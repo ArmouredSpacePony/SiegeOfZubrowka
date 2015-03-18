@@ -4,4 +4,5 @@
     <string name="moveRight">-&gt;</string>
     <string name="moveLeft">&lt;-</string>
     <string name="score">Score: </string>
+    <string name="title_activity_gameover">game over</string>
   </resources>

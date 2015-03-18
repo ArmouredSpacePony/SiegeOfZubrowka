@@ -18,6 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="nl.voorbeeld.coolgame.GameOverActivity"
+            android:label="@string/title_activity_gameover" >
+			android:parentActivityName="nl.voorbeeld.coolgame.MainActivity" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="nl.voorbeeld.coolgame.MainActivity" />
+
+        </activity>
+
+
+
     </application>
 
 </manifest>
