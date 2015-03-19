@@ -2,11 +2,13 @@ package nl.voorbeeld.coolgame;
 
 import nl.saxion.act.playground.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import nl.voorbeeld.coolgame.CoolGame;
 
 /**
  * The main activity.
@@ -35,17 +37,20 @@ public class MainActivity extends Activity {
 		game = new CoolGame(this);
 
 		// Do something when user clicks new game
-		registerNewGameButton();
+		// registerNewGameButton();
 
 		// Tell user to start the game
-		Toast.makeText(getApplicationContext(), "Lets start",
+		Toast.makeText(getApplicationContext(), "Lets play!",
 				Toast.LENGTH_SHORT).show();
+		moveLeftButton();
+		moveRightButton();
 	}
 
 	/**
 	 * Set a new score on the score label
 	 * 
-	 * @param newScore  The new score.
+	 * @param newScore
+	 *            The new score.
 	 */
 	public void updateScoreLabel(int newScore) {
 		scoreLabel.setText("Score: " + newScore);
@@ -59,20 +64,52 @@ public class MainActivity extends Activity {
 	}
 
 	/**
-	 * Install a listener to the 'New game'-button so that it starts a new
-	 * game when clicked.
+	 * Install a listener to the 'New game'-button so that it starts a new game
+	 * when clicked.
 	 */
-	private void registerNewGameButton() {
+
+	/*
+	 * private void registerNewGameButton() { // Find the 'New Game'-button in
+	 * the activity final Button button1 = (Button)
+	 * findViewById(R.id.newGameButton);
+	 * 
+	 * // Add a click listener to the button that calls initNewGame()
+	 * button1.setOnClickListener(new View.OnClickListener() {
+	 * 
+	 * @Override public void onClick(View v) { game.initNewGame(); } }); }
+	 */
+
+	private void moveLeftButton() {
 		// Find the 'New Game'-button in the activity
-		final Button button1 = (Button) findViewById(R.id.newGameButton);
-		
+		final Button button1 = (Button) findViewById(R.id.moveLeftButton);
+
 		// Add a click listener to the button that calls initNewGame()
 		button1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				game.initNewGame();
+				game.getPlayer().moveLeft(game.getGameBoard());
 			}
 		});
 	}
+
+	private void moveRightButton() {
+		// Find the 'New Game'-button in the activity
+		final Button button1 = (Button) findViewById(R.id.moveRightButton);
+
+		// Add a click listener to the button that calls initNewGame()
+		button1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				game.getPlayer().moveRight(game.getGameBoard());
+			}
+		});
+	}
+
+	public void beginActivity(Intent intent) {
+		startActivity(intent);
+	}
+	/*public void onResume(){
+		game=new CoolGame(this);
+		}*/
 
 }
