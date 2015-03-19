@@ -3,12 +3,12 @@ package nl.voorbeeld.coolgame;
 import nl.saxion.act.playground.model.GameBoard;
 
 /**
- * The game board for CoolGame.
+ * The game board for Siege of Zubrowka.
  * 
- * @author Paul de Groot
+ * @author team Wild Ponies
  */
 public class CoolGameBoard extends GameBoard {
-	private static final int GAMEBOARD_WIDTH = 9;
+	private static final int GAMEBOARD_WIDTH = 10;
 	private static final int GAMEBOARD_HEIGHT = 18;
 
 	/**
