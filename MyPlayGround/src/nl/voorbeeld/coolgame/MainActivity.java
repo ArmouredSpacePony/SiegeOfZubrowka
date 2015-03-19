@@ -1,20 +1,17 @@
 package nl.voorbeeld.coolgame;
 
 import nl.saxion.act.playground.R;
-import nl.voorbeeld.coolgame.objects.Player;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import nl.voorbeeld.coolgame.CoolGame;
 
 /**
- * The main activity.
+ * The main activity for Siege of Zubrowka.
  * 
- * @author Paul de Groot
- * @author Jan Stroet
+ * @author team Wild Ponies
  */
 public class MainActivity extends Activity {
 	private CoolGame game;
@@ -37,13 +34,11 @@ public class MainActivity extends Activity {
 		game = new CoolGame(this);
 
 		// Do something when user clicks new game
-		//registerNewGameButton();
-		
+		registerNewGameButton();
+
 		// Tell user to start the game
 		Toast.makeText(getApplicationContext(), "Lets start",
 				Toast.LENGTH_SHORT).show();
-		moveLeftButton();
-		moveRightButton();
 	}
 
 	/**
@@ -66,9 +61,7 @@ public class MainActivity extends Activity {
 	 * Install a listener to the 'New game'-button so that it starts a new
 	 * game when clicked.
 	 */
-	
-	
-	/*private void registerNewGameButton() {
+	private void registerNewGameButton() {
 		// Find the 'New Game'-button in the activity
 		final Button button1 = (Button) findViewById(R.id.newGameButton);
 		
@@ -77,37 +70,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				game.initNewGame();
-			}
-		});
-	}*/
-	
-	
-	private void moveLeftButton() {
-		// Find the 'New Game'-button in the activity
-		final Button button1 = (Button) findViewById(R.id.moveLeftButton);
-
-		// Add a click listener to the button that calls initNewGame()
-		button1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (!game.isGameOver()) {
-					game.getPlayer().moveLeft(game.getGameBoard());
-				}
-			}
-		});
-	}
-
-	private void moveRightButton() {
-		// Find the 'New Game'-button in the activity
-		final Button button1 = (Button) findViewById(R.id.moveRightButton);
-
-		// Add a click listener to the button that calls initNewGame()
-		button1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (!game.isGameOver()) {
-					game.getPlayer().moveRight(game.getGameBoard());
-				}
 			}
 		});
 	}
