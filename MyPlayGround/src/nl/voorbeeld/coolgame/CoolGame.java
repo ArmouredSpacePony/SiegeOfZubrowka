@@ -1,118 +1,127 @@
 package nl.voorbeeld.coolgame;
 
-import android.widget.Toast;
-import nl.saxion.act.playground.model.Game;
-import nl.saxion.act.playground.model.GameBoard;
-import nl.voorbeeld.coolgame.objects.Leaf;
-import nl.voorbeeld.coolgame.objects.Rock;
-import nl.voorbeeld.coolgame.objects.Player;
+import java.util.Random;
 
+import nl.saxion.act.playground.model.*;
+import nl.saxion.act.playground.view.GameBoardView;
+import nl.voorbeeld.coolgame.objects.*;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
 
-/**
- * Awesome game for the Speelveld-project.
- * 
- * @author Paul de Groot
- */
+@SuppressWarnings("unused")
 public class CoolGame extends Game {
-	
-	
-	
-	private Player player= new Player();
-	private boolean gameOver= false;
-	
-	/** Tag used for log messages */
 	public static final String TAG = "CoolGame";
-
-	/** Reference to the main activity, so some labels can be updated. */
 	private MainActivity activity;
-	
-	/** The number of leafs eaten. */
 	private int score;
+	private Player player = new Player();
+	private boolean gameOver = false;
+	private final int MAX_ENEMIES_ON_GAMEBOARD = 8;
+	public boolean _stop = false;
+	private int enemiesToSpawn;
+	private Handler mHandler;
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param activity  The main activity
-	 */
 	public CoolGame(MainActivity activity) {
-		// Create a new game board and couple it to this game
 		super(new CoolGameBoard());
-		
-		// Store reference to the main activity
 		this.activity = activity;
-
-		// Reset the game
 		initNewGame();
 
-		// Tell the game board view which game board to show
 		CoolGameBoardView gameView = activity.getGameBoardView();
 		GameBoard gameBoard = getGameBoard();
 		gameView.setGameBoard(gameBoard);
-		
-		// Set size of the view to that of the game board
+
 		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
 	}
-	
-	public Player getPlayer(){
-		return player;
-	}
 
-	/**
-	 * Starts a new game.
-	 * Resets the score and places all objects in the right place.
-	 */
-	 
-	 final Runnable spawn = new Runnable() {
-	 @Override
+	final Runnable spawn = new Runnable() {
+
+		@Override
 		public void run() {
-		spawnEnemies();
-		}
-	}
-	_stop = new Boolean;
+			spawnEnemies();
+		};
+	};
+
+	final Runnable eMovement = new Runnable() {
+		@Override
+		public void run() {
+
+		};
+	};
+
 	public void initNewGame() {
-		// Set the score and update the label
 		score = 0;
-		activity.updateScoreLabel(score);
-		gameOver=false;
+		gameOver = false;
 
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
 
-		// Add a player object
-		board.addGameObject(new Player(), 5, 0);
-		// init delay plus first row  //import runnable java.lang.Runnable
-		mHandler = new Handler(Looper.getMainLooper()) {
-			while(!_stop){ postAtTime(Runnable enemy.run, long 1000);//maybe no delay for movement?
-				postAtTime(Runnable spawn, long 1000);
-			
-    				} 
-    			 removeCallbacks (Runnable enemy.run);
-    			removeCallbacks (Runnable Coolgame.run);
+		board.addGameObject(player, 4, 17);
+		
+		mHandler = new Handler(Looper.getMainLooper());
 
-		// Redraw the game view
+		mHandler.postAtTime(spawn, 1000);
+		mHandler.postAtTime(eMovement, 1000);
+		
+		
 		board.updateView();
 	}
 
 	/**
-	 * Called by Wombat if it ate a leaf. Increases the score.
+	 * days=placeholder for days(level)
 	 */
-	public void changeScore(int punten) {
-		score= score+punten;
-		activity.updateScoreLabel(score);
-	}
-	
-	public void GameOver(){
-		getGameBoard().removeAllObjects();
-		//TODO stop timer
-		gameOver = true;
-		activity.getGameBoardView().setBackgroundResource(R.drawable.gameoverscreen);
+	public void spawnEnemies() {
+		//TODO 
+		GameBoard board = getGameBoard();
+		int days = 4;
+		enemiesToSpawn = (int) (12 + 3.35 * days * 3.5);
+		int enemiesLeft = 9;
+		/*while (enemiesLeft > 1) {
+			Random r = new Random();
+			int x = r.nextInt(8);
+			int y = 0;
+			GameObject objectAtNewPos = gameBoard.getObject(x, y);
+			if (objectAtNewPos != null) {
+			} else {
+				board.addGameObject(new Enemy(), x, y);
+				enemiesLeft--;
+			}
+		}*/
+		board.addGameObject(new Enemy(),4,0);
+		board.updateView();
+		board.addGameObject(new Enemy(),5,0);
+		board.updateView();
+		board.addGameObject(new Enemy(),3,0);
 		
-		Toast.makeText(activity.getApplicationContext(), "GAME OVER",
-				Toast.LENGTH_LONG).show();
+	}
+
+	public void gameOver() {
+		getGameBoard().removeAllObjects();
+		mHandler.removeCallbacks(spawn, null);
+		mHandler.removeCallbacks(eMovement, null);
+		
+		gameOver = true;
+		_stop = true;
+		player=null;
+		
+		Intent intent = new Intent(activity, GameOverActivity.class);
+		activity.beginActivity(intent);
 	}
 
 	public boolean isGameOver() {
 		return gameOver;
 	}
+
+	public void changeScore() {
+		score++;
+		activity.updateScoreLabel(score);
+	}
+
+	/**
+	 * @return the player
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+
 }
-//dimitri faalt
