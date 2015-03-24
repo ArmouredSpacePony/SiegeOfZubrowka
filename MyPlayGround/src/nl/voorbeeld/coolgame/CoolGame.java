@@ -1,7 +1,7 @@
 package nl.voorbeeld.coolgame;
 
 import java.util.Random;
-
+import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.model.*;
 import nl.saxion.act.playground.view.GameBoardView;
 import nl.voorbeeld.coolgame.objects.*;
@@ -29,7 +29,7 @@ public class CoolGame extends Game {
 		return soundPool;
 	}
 	// laad een sound in
-	public final int AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(), R.raw.ak47-1, 1);
+	public final int AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(), R.raw.ak47_1, 1);
 	
 	/*mathijs hier is het example:
 	game.getSoundPool().play(game.AK47_ONE_SHOT, 1, 1, 1, 0, 1);
