@@ -5,18 +5,13 @@ import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
 import nl.voorbeeld.coolgame.CoolGame;
 
-/**
- * The Wombat is our 'player object'. It should try to eat leafs.
- * 
- * @author Paul de Groot
- */
 public class Player extends GameObject {
-	public static final String WOMBAT_IMAGE = "Wombat";
+	public static final String PLAYER_IMAGE = "playertemplate";
 
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return WOMBAT_IMAGE;
+		return PLAYER_IMAGE;
 	}
 
 	/** Called when the user touched this wombat. */
@@ -25,7 +20,7 @@ public class Player extends GameObject {
 		Log.d(CoolGame.TAG, "Touched wombat");
 
 		// Wombats always move a square to the right
-		int newPosX = getPositionX() + 1;
+		int newPosX = getPositionX();
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
@@ -38,14 +33,14 @@ public class Player extends GameObject {
 		if (objectAtNewPos != null) {
 
 			// Wombats can't move through rocks
-			if (objectAtNewPos instanceof Rock) {
+			if (objectAtNewPos instanceof Enemy) {
 				return;
 			}
 
 			// Caught a leaf? Score!
 			if (objectAtNewPos instanceof Leaf) {
 				gameBoard.removeObject(objectAtNewPos);
-				((CoolGame) gameBoard.getGame()).changeScore(1);
+				((CoolGame) gameBoard.getGame()).changeScore();
 			}
 		}
 
