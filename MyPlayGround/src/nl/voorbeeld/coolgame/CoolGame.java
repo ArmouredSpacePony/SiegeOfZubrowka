@@ -21,6 +21,19 @@ public class CoolGame extends Game {
 	public boolean _stop = false;
 	private int enemiesToSpawn;
 	private Handler mHandler;
+	
+	// init desoundpool om gamesounds te laden
+	private SoundPool soundPool = new SoundPool (10, AudioManager.STREAM_MUSIC, 0);
+	//geeft de soundpool die gebruikt word voor de game
+	public SoundPool getSoundPool (){
+		return soundPool;
+	}
+	// laad een sound in
+	public final int AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(), R.raw.ak47-1, 1);
+	
+	/*mathijs hier is het example:
+	game.getSoundPool().play(game.AK47_ONE_SHOT, 1, 1, 1, 0, 1);
+	*/
 
 	public CoolGame(MainActivity activity) {
 		super(new CoolGameBoard());
