@@ -9,7 +9,7 @@ package nl.saxion.act.playground.model;
  * @author Paul de Groot
  */
 public abstract class Game {
-	private GameBoard gameBoard;
+	public static GameBoard gameBoard;
 
 	/**
 	 * Called when you create a new game.
