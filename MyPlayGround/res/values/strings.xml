@@ -2,7 +2,8 @@
 <resources>
     <string name="app_name">SpeelveldDemo</string>
     <string name="moveRight">-&gt;</string>
-    <string name="moveLeft">&lt;-</string>
+    <string name="moveLeft">&lt;-</string>  
     <string name="score">Score: </string>
-    <string name="title_activity_gameover">game over</string>
+    <string name="title_activity_gameover">Game Over</string>
+    <string name="title_activity_menuScherm">menu</string>
   </resources>
