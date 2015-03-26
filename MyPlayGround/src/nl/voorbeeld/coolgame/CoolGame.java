@@ -29,7 +29,7 @@ public class CoolGame extends Game {
 		return soundPool;
 	}
 	// laad een sound in
-	public final int AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(), R.raw.ak47_1, 1);
+	public final int AK47_ONE_SHOT_SOUND;
 	
 	/*mathijs hier is het example:
 	game.getSoundPool().play(game.AK47_ONE_SHOT, 1, 1, 1, 0, 1);
@@ -45,6 +45,7 @@ public class CoolGame extends Game {
 		gameView.setGameBoard(gameBoard);
 
 		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
+		AK47_ONE_SHOT_SOUND  = soundPool.load(activity.getApplicationContext(), R.raw.ak47_1, 1);
 	}
 
 	final Runnable spawn = new Runnable() {
