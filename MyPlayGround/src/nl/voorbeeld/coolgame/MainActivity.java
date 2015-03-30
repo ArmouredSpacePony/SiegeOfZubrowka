@@ -13,8 +13,7 @@ import nl.voorbeeld.coolgame.CoolGame;
 /**
  * The main activity.
  * 
- * @author Paul de Groot
- * @author Jan Stroet
+ * @author Team Wild Ponies
  */
 public class MainActivity extends Activity {
 	private CoolGame game;
