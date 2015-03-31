@@ -168,6 +168,7 @@ public abstract class GameBoardView extends View implements Observer {
 	 * Handles the basic update: the visualization is updated according to
 	 * objects on the game board.
 	 */
+	@Override
 	public void update(Observable o, Object arg) {
 		determineGridBitmaps();
 		invalidate();

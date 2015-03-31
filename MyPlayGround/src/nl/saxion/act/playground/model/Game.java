@@ -16,7 +16,7 @@ public abstract class Game {
 	 * @param gameBoard
 	 */
 	public Game(GameBoard gameBoard) {
-		this.gameBoard = gameBoard;
+		Game.gameBoard = gameBoard;
 		gameBoard.setGame(this);
 	}
 
