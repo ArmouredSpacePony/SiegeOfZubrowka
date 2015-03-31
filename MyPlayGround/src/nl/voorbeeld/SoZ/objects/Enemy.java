@@ -1,11 +1,11 @@
-package nl.voorbeeld.coolgame.objects;
+package nl.voorbeeld.SoZ.objects;
 
 import java.util.Random;
 
 import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
-import nl.voorbeeld.coolgame.CoolGame;
+import nl.voorbeeld.SoZ.SoZGame;
 import nl.saxion.act.playground.model.Game;
 
 public class Enemy extends GameObject implements Runnable {
@@ -42,7 +42,7 @@ public class Enemy extends GameObject implements Runnable {
 	@Override
 	public void onTouched(GameBoard gameBoard) {
 		// placeholder until movement functions
-		Log.d(CoolGame.TAG, "Touched Enemy");
+		Log.d(SoZGame.TAG, "Touched Enemy");
 		callMovement(gameBoard);
 
 		// redBlock = !redBlock;
@@ -51,7 +51,7 @@ public class Enemy extends GameObject implements Runnable {
 
 	public void callMovement(GameBoard gameBoard){
 		
-			Log.d(CoolGame.TAG, "Moved Enemy");
+			Log.d(SoZGame.TAG, "Moved Enemy");
 			// player moves to the right
 			int newPosX = getPositionX();
 			int newPosY = getPositionY()+1;
@@ -69,7 +69,7 @@ public class Enemy extends GameObject implements Runnable {
 			}
 			// If new position crosses border, call gameover
 			if(newPosY > 16){
-				((CoolGame)gameBoard.getGame()).gameOver();
+				((SoZGame)gameBoard.getGame()).gameOver();
 			}
 			// Move player to the new position and redraw the app
 			gameBoard.moveObject(this, newPosX, newPosY);

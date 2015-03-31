@@ -1,4 +1,4 @@
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.R;
 import android.app.Activity;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import nl.voorbeeld.coolgame.CoolGame;
+import nl.voorbeeld.SoZ.SoZGame;
 
 /**
  * The main activity.
@@ -16,8 +16,8 @@ import nl.voorbeeld.coolgame.CoolGame;
  * @author Team Wild Ponies
  */
 public class MainActivity extends Activity {
-	private CoolGame game;
-	private CoolGameBoardView gameView;
+	private SoZGame game;
+	private SoZBoardView gameView;
 	private TextView scoreLabel;
 
 	/** Called when the activity is first created. */
@@ -28,12 +28,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		// Find some of the user interface elements
-		gameView = (CoolGameBoardView) findViewById(R.id.game);
+		gameView = (SoZBoardView) findViewById(R.id.game);
 		scoreLabel = (TextView) findViewById(R.id.scoreTextView);
 
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
-		game = new CoolGame(this);
+		game = new SoZGame(this);
 
 		// Do something when user clicks new game
 		// registerNewGameButton();
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
 	/**
 	 * Returns the view on the game board.
 	 */
-	public CoolGameBoardView getGameBoardView() {
+	public SoZBoardView getGameBoardView() {
 		return gameView;
 	}
 
@@ -108,7 +108,7 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	/*public void onResume(){
-		game=new CoolGame(this);
+		game=new SoZGame(this);
 		}*/
 
 }

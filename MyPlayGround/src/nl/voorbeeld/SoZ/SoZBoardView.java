@@ -1,10 +1,10 @@
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.view.GameBoardView;
 import nl.saxion.act.playground.view.SpriteCache;
-import nl.voorbeeld.coolgame.objects.Enemy;
-import nl.voorbeeld.coolgame.objects.Player;
+import nl.voorbeeld.SoZ.objects.Enemy;
+import nl.voorbeeld.SoZ.objects.Player;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -14,13 +14,13 @@ import android.util.Log;
  * 
  * @author team Wild Ponies
  */
-public class CoolGameBoardView extends GameBoardView {
+public class SoZBoardView extends GameBoardView {
 	private static final String TAG = "GameView";
 
 	/**
 	 * Constructor.
 	 */
-	public CoolGameBoardView(Context context, AttributeSet attrs) {
+	public SoZBoardView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		initGameView();
 	}
@@ -28,7 +28,7 @@ public class CoolGameBoardView extends GameBoardView {
 	/**
 	 * Constructor.
 	 */
-	public CoolGameBoardView(Context context, AttributeSet attrs, int defStyle) {
+	public SoZBoardView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		initGameView();
 	}

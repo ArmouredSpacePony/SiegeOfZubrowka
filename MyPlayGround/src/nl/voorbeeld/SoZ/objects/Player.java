@@ -1,9 +1,9 @@
-package nl.voorbeeld.coolgame.objects;
+package nl.voorbeeld.SoZ.objects;
 
 import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
-import nl.voorbeeld.coolgame.CoolGame;
+import nl.voorbeeld.SoZ.SoZGame;
 
 public class Player extends GameObject {
 	public static final String PLAYER_IMAGE = "playertemplate";
@@ -17,7 +17,7 @@ public class Player extends GameObject {
 	/** Called when the user touched this wombat. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Touched wombat");
+		Log.d(SoZGame.TAG, "Touched wombat");
 
 		// Wombats always move a square to the right
 		int newPosX = getPositionX();
@@ -40,7 +40,7 @@ public class Player extends GameObject {
 			// Caught a leaf? Score!
 			if (objectAtNewPos instanceof Leaf) {
 				gameBoard.removeObject(objectAtNewPos);
-				((CoolGame) gameBoard.getGame()).changeScore();
+				((SoZGame) gameBoard.getGame()).changeScore();
 			}
 		}
 
@@ -50,7 +50,7 @@ public class Player extends GameObject {
 	}
 
 	public void moveLeft(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Moved Player");
+		Log.d(SoZGame.TAG, "Moved Player");
 
 		// player moves to the left
 		int newPosX = getPositionX() - 1;
@@ -67,7 +67,7 @@ public class Player extends GameObject {
 	}
 
 	public void moveRight(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Moved Player");
+		Log.d(SoZGame.TAG, "Moved Player");
 
 		// player moves to the right
 		int newPosX = getPositionX() + 1;

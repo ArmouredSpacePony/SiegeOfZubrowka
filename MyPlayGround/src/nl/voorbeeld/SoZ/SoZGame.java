@@ -1,10 +1,11 @@
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.SoZ;
 
 import java.util.Random;
+
 import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.model.*;
 import nl.saxion.act.playground.view.GameBoardView;
-import nl.voorbeeld.coolgame.objects.*;
+import nl.voorbeeld.SoZ.objects.*;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -13,8 +14,8 @@ import android.os.Looper;
 import android.view.View;
 
 @SuppressWarnings("unused")
-public class CoolGame extends Game {
-	public static final String TAG = "CoolGame";
+public class SoZGame extends Game {
+	public static final String TAG = "SoZGame";
 	private MainActivity activity;
 	private int score;
 	private Player player = new Player();
@@ -43,8 +44,8 @@ public class CoolGame extends Game {
 	 * 1, 1, 1, 0, 1);
 	 */
 
-	public CoolGame(MainActivity activity) {
-		super(new CoolGameBoard());
+	public SoZGame(MainActivity activity) {
+		super(new SoZBoard());
 		this.activity = activity;
 		enemy1 = new Enemy();
 		enemy2 = new Enemy();
@@ -55,7 +56,7 @@ public class CoolGame extends Game {
 
 		initNewGame();
 
-		CoolGameBoardView gameView = activity.getGameBoardView();
+		SoZBoardView gameView = activity.getGameBoardView();
 		GameBoard gameBoard = getGameBoard();
 		gameView.setGameBoard(gameBoard);
 

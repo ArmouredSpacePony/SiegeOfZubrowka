@@ -1,4 +1,4 @@
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.model.GameBoard;
 
@@ -7,14 +7,14 @@ import nl.saxion.act.playground.model.GameBoard;
  * 
  * @author team Wild Ponies
  */
-public class CoolGameBoard extends GameBoard {
+public class SoZBoard extends GameBoard {
 	private static final int GAMEBOARD_WIDTH = 10;
 	private static final int GAMEBOARD_HEIGHT = 18;
 
 	/**
 	 * Create a new game board.
 	 */
-	public CoolGameBoard() {
+	public SoZBoard() {
 		super(GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT);
 	}
 

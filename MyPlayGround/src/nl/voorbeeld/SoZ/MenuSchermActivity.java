@@ -1,5 +1,5 @@
 
-package nl.voorbeeld.coolgame;
+package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.R;
 import android.app.Activity;

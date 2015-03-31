@@ -1,9 +1,9 @@
-package nl.voorbeeld.coolgame.objects;
+package nl.voorbeeld.SoZ.objects;
 
 import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
-import nl.voorbeeld.coolgame.CoolGame;
+import nl.voorbeeld.SoZ.SoZGame;
 
 /**
  * A leaf object. This is the object that wombats should try to eat. Leafs move
@@ -24,7 +24,7 @@ public class Leaf extends GameObject {
 	/** Called when the user touched this leaf. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		Log.d(CoolGame.TAG, "Touched leaf");
+		Log.d(SoZGame.TAG, "Touched leaf");
 
 		// Leafs always move a square up
 		int newPosX = getPositionX();
