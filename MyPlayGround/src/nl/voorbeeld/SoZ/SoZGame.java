@@ -64,12 +64,12 @@ public class SoZGame extends Game {
 		AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(),
 				R.raw.ak47_1, 1);
 	}
-
+	
 	final Runnable spawn = new Runnable() {
-
+		
 		@Override
 		public void run() {
-
+			/*
 			int days = 4;
 			enemiesToSpawn = (int) (12 + 3.35 * days * 3.5);
 			int enemiesLeft = 5;
@@ -85,6 +85,7 @@ public class SoZGame extends Game {
 				}
 			}
 			spawnEnemies(gameBoard);
+			*/
 
 		};
 	};
@@ -92,6 +93,7 @@ public class SoZGame extends Game {
 	final Runnable eMovement = new Runnable() {
 		@Override
 		public void run() {
+			/*
 
 			enemy1.callMovement(gameBoard);
 			enemy2.callMovement(gameBoard);
@@ -99,7 +101,7 @@ public class SoZGame extends Game {
 			enemy4.callMovement(gameBoard);
 			enemy5.callMovement(gameBoard);
 			enemy6.callMovement(gameBoard);
-
+			*/
 		};
 	};
 
