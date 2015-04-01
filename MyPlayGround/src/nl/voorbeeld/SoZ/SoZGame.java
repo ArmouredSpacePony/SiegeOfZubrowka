@@ -26,6 +26,7 @@ public class SoZGame extends Game {
 	private Handler mHandler;
 	private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
 			enemy8, enemy9, enemy10;
+	private Savegame savegame;
 
 	// init desoundpool om gamesounds te laden
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
@@ -45,6 +46,7 @@ public class SoZGame extends Game {
 	 */
 
 	public SoZGame(MainActivity activity) {
+		
 		super(new SoZBoard());
 		this.activity = activity;
 		enemy1 = new Enemy();
@@ -53,7 +55,12 @@ public class SoZGame extends Game {
 		enemy4 = new Enemy();
 		enemy5 = new Enemy();
 		enemy6 = new Enemy();
-
+		
+		savegame=new Savegame();
+		
+		if (enemy1==null){
+			
+		}
 		initNewGame();
 
 		SoZBoardView gameView = activity.getGameBoardView();
@@ -164,6 +171,10 @@ public class SoZGame extends Game {
 	 */
 	public Player getPlayer() {
 		return player;
+	}
+	
+	public Savegame getSavegame(){
+		return savegame;
 	}
 
 }

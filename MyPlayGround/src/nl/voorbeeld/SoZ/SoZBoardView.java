@@ -4,6 +4,7 @@ import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.view.GameBoardView;
 import nl.saxion.act.playground.view.SpriteCache;
 import nl.voorbeeld.SoZ.objects.Enemy;
+import nl.voorbeeld.SoZ.objects.Muur;
 import nl.voorbeeld.SoZ.objects.Player;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -54,6 +55,7 @@ public class SoZBoardView extends GameBoardView {
 		spriteCache.loadTile(Enemy.Enemy1_IMAGE, R.drawable.civilian3);
 		spriteCache.loadTile(Enemy.Enemy2_IMAGE, R.drawable.civilian4);
 		spriteCache.loadTile(Enemy.Enemy3_IMAGE, R.drawable.civilian5);
+		spriteCache.loadTile(Muur.MUUR_IMAGE, R.drawable.concrete1);
 		// Load the image for the bullet (projectile)
 		spriteCache.loadTile("bullet", R.drawable.bullet);
 	}
