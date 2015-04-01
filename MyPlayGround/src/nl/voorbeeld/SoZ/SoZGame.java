@@ -27,6 +27,7 @@ public class SoZGame extends Game {
 	private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
 			enemy8, enemy9, enemy10;
 	private Savegame savegame;
+	private Muur muur1, muur2, muur3, muur4, muur5, muur6, muur7, muur8, muur9;
 
 	// init desoundpool om gamesounds te laden
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
@@ -55,6 +56,17 @@ public class SoZGame extends Game {
 		enemy4 = new Enemy();
 		enemy5 = new Enemy();
 		enemy6 = new Enemy();
+		
+		muur1 = new Muur();
+		muur2 = new Muur();
+		muur3 = new Muur();
+		muur4 = new Muur();
+		muur5 = new Muur();
+		muur6 = new Muur();
+		muur7 = new Muur();
+		muur8 = new Muur();
+		muur9 = new Muur();
+		
 		
 		savegame=new Savegame();
 		
@@ -119,7 +131,18 @@ public class SoZGame extends Game {
 		GameBoard board = getGameBoard();
 		board.removeAllObjects();
 
-		board.addGameObject(player, 4, 17);
+		board.addGameObject(player, 4, board.getHeight()-1);
+		
+		board.addGameObject(muur1, 0, board.getHeight()-2);
+		board.addGameObject(muur2, 1, board.getHeight()-2);
+		board.addGameObject(muur3, 2, board.getHeight()-2);
+		board.addGameObject(muur4, 3, board.getHeight()-2);
+		board.addGameObject(muur5, 4, board.getHeight()-2);
+		board.addGameObject(muur6, 5, board.getHeight()-2);
+		board.addGameObject(muur7, 6, board.getHeight()-2);
+		board.addGameObject(muur8, 7, board.getHeight()-2);
+		board.addGameObject(muur9, 8, board.getHeight()-2);
+		
 
 		mHandler = new Handler(Looper.getMainLooper());
 

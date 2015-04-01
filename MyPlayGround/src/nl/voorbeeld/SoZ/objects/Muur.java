@@ -9,8 +9,7 @@ public class Muur extends GameObject {
 
 	@Override
 	public String getImageId() {
-		// TODO Auto-generated method stub
-		return null;
+		return MUUR_IMAGE;
 	}
 	
 	public Muur(){
