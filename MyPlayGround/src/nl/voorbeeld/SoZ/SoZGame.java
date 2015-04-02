@@ -31,7 +31,6 @@ public class SoZGame extends Game {
 
 	//private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
 			//enemy8, enemy9, enemy10;
-	private Savegame savegame;
 	
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
 	private ArrayList<Muur> muurList = new ArrayList<Muur>();
@@ -62,7 +61,7 @@ public class SoZGame extends Game {
 
 	public SoZGame(MainActivity activity) {
 
-		super(new SoZBoard());
+		super(new SoZBoard(), new Savegame());
 		this.activity = activity;
 		// enemyList.add(enemy1 = new Enemy());
 		// enemyList.add(enemy2 = new Enemy());
@@ -177,9 +176,6 @@ public class SoZGame extends Game {
 		return player;
 	}
 
-	public Savegame getSavegame() {
-		return savegame;
-	}
 /*
 	final Runnable enemySpawnRunnable = new Runnable() {
 		public void run() {

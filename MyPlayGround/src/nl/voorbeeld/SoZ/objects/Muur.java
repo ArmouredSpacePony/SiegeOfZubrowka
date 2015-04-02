@@ -1,5 +1,6 @@
 package nl.voorbeeld.SoZ.objects;
 
+import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
 import nl.voorbeeld.SoZ.SoZGame;
@@ -21,9 +22,10 @@ public class Muur extends GameObject {
 	}
 	
 	public void muurDamaged(GameBoard gameBoard){
-		int leven=((SoZGame)gameBoard.getGame()).getSavegame().getMuur(getPositionX());
+		int leven=(gameBoard.getGame()).savegame.getMuur(getPositionX());
+		Log.i("muur before", ""+leven);
 		leven = leven -7;
-		((SoZGame)gameBoard.getGame()).getSavegame().setMuur(getPositionX(),leven);
+		(gameBoard.getGame()).savegame.setMuur(getPositionX(),leven);
 		
 		if (leven<0){
 			gameBoard.removeObject(this);

@@ -1,5 +1,7 @@
 package nl.saxion.act.playground.model;
 
+import nl.voorbeeld.SoZ.Savegame;
+
 /**
  * Superclass for all games. 
 * 
@@ -10,12 +12,14 @@ package nl.saxion.act.playground.model;
  */
 public abstract class Game {
 	public static GameBoard gameBoard;
+	public static Savegame savegame;
 
 	/**
 	 * Called when you create a new game.
 	 * @param gameBoard
 	 */
-	public Game(GameBoard gameBoard) {
+	public Game(GameBoard gameBoard, Savegame savegame) {
+		Game.savegame=savegame;
 		Game.gameBoard = gameBoard;
 		gameBoard.setGame(this);
 	}
