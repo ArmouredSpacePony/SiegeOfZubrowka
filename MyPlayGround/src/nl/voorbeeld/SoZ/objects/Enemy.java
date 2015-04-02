@@ -50,30 +50,20 @@ public class Enemy extends GameObject implements Runnable {
 	}
 
 	public void callMovement(GameBoard gameBoard){
+
+		Log.d(SoZGame.TAG, "Moved Enemy");
 		
-			Log.d(SoZGame.TAG, "Moved Enemy");
-			// player moves to the right
-			int newPosX = getPositionX();
-			int newPosY = getPositionY()+1;
-			Random r = new Random();
-			int x = r.nextInt(8);
-			int y = 0;
-			GameObject objectAtNewPos = gameBoard.getObject(x, y);
-			try{
-			if (objectAtNewPos != null) {
-				throw new IllegalArgumentException("Destination already contains an object");
-				}
-			}
-			catch(IllegalArgumentException e){
-				
-			}
-			// If new position crosses border, call gameover
-			if(newPosY > 16){
-				((SoZGame)gameBoard.getGame()).gameOver();
-			}
-			// Move player to the new position and redraw the app
-			gameBoard.moveObject(this, newPosX, newPosY);
-			gameBoard.updateView();
+		int newPosX = getPositionX();
+		int newPosY = getPositionY()+1;
+		
+		
+		if(newPosY > 17){
+			((SoZGame)gameBoard.getGame()).gameOver();
+		}
+		// Move player to the new position and redraw the app
+		gameBoard.moveObject(this, newPosX, newPosY);
+		gameBoard.updateView();
+		
 		
 	}
 

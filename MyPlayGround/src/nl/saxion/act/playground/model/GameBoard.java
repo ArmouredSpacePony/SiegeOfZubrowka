@@ -58,12 +58,14 @@ public abstract class GameBoard extends Observable {
 	 * @throws IllegalArgumentException if (x,y) is not empty
 	 */
 	public void addGameObject(GameObject obj, int x, int y) {
-		if( gameBoard[x][y] != null ) {
-			throw new IllegalArgumentException("Destination already contains an object");
+		try{
+			gameBoard[x][y] =obj;
+			obj.setPosition(x, y);
+		}catch(IllegalArgumentException e){
+			Log.w("addGameObject", "tried to add gameobject to board, but the cell already contained an object.");
+			gameBoard[x+1][y] =obj;
+			obj.setPosition(x+1, y);
 		}
-		
-		gameBoard[x][y] = obj;
-		obj.setPosition(x,  y);
 	}
 
 	/**
@@ -80,15 +82,19 @@ public abstract class GameBoard extends Observable {
 		int oldY = obj.getPositionY();
 
 		gameBoard[oldX][oldY] = null;
-		
-		if( gameBoard[newX][newY] != null ) {
-			throw new IllegalArgumentException("Destination already contains an object");
+		try{
+			if( gameBoard[newX][newY] != null ) {
+				throw new IllegalArgumentException("Destination already contains an object");
+			}
+			gameBoard[newX][newY] = obj;
+			obj.setPosition(newX, newY);
+		}catch(IllegalArgumentException e){
+			Log.w("addGameObject", "tried to add gameobject to board, but the cell already contained an object.");
 		}
 		
-		gameBoard[newX][newY] = obj;
-		obj.setPosition(newX, newY);
+		
+		
 	}
-
 	/**
 	 * Retrieves the object at the location (x, y) on the board.
 	 * 
