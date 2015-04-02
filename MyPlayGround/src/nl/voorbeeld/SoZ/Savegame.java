@@ -67,14 +67,6 @@ public class Savegame {
 		int loadedGuards;
 		int loadedDogs;
 		int[] loadedMuur = new int[maxMuur];
-		int loadedMuur2;
-		int loadedMuur3;
-		int loadedMuur4;
-		int loadedMuur5;
-		int loadedMuur6;
-		int loadedMuur7;
-		int loadedMuur8;
-		int loadedMuur9;
 
 		in.useDelimiter("/");
 
@@ -188,8 +180,8 @@ public class Savegame {
 
 		guards = loadedGuards;
 		dogs = loadedGuards;
-		
-		for(int i:muur){
+
+		for (int i : muur) {
 			muur[i] = loadedMuur[1];
 		}
 		return;
@@ -328,7 +320,11 @@ public class Savegame {
 	 *            the number of guards left
 	 */
 	public void setGuards(int guards) {
-		this.guards = guards;
+		if(guards < 0){
+			this.guards = 0;
+		}else{
+			this.guards = guards;
+		}
 	}
 
 	/**
@@ -343,7 +339,11 @@ public class Savegame {
 	 *            the number of dogs left
 	 */
 	public void setDogs(int dogs) {
-		this.dogs = dogs;
+		if (dogs < 0) {
+			this.dogs = 0;
+		} else {
+			this.dogs = dogs;
+		}
 	}
 
 	/**
@@ -359,6 +359,12 @@ public class Savegame {
 	 * en hoeveel leven hij moet krijgen
 	 */
 	public void setMuur(int xCoordinaat, int leven) {
-		muur[xCoordinaat] = leven;
+		if (leven < 0) {
+			muur[xCoordinaat] = 0;
+		} else if (leven > 100) {
+			muur[xCoordinaat] = 100;
+		} else {
+			muur[xCoordinaat] = leven;
+		}
 	}
 }
