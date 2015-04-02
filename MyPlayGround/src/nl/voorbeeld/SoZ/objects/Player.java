@@ -57,7 +57,7 @@ public class Player extends GameObject {
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
-		if (newPosX < 0) {
+		if (newPosX < 0|| ((SoZGame)(gameBoard.getGame())).isGameOver()) {
 			return;
 		}
 
@@ -74,7 +74,7 @@ public class Player extends GameObject {
 		int newPosY = getPositionY();
 
 		// If new position is over the edge of the board, do nothing
-		if (newPosX > 8) {
+		if (newPosX > gameBoard.getWidth()-1 || ((SoZGame)(gameBoard.getGame())).isGameOver()) {
 			return;
 		}
 

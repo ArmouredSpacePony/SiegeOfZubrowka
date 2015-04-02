@@ -237,11 +237,13 @@ public class SoZGame extends Game {
 							while (!enemySpawned) {
 								int random = (int) (Math.random() * 9);
 								if (getGameBoard().getObject(random, 0) == null) {
-									enemyList.add(new Enemy());
-									getGameBoard().addGameObject(enemyList.get(enemyList.size()-1),
+									if (!gameOver){
+										enemyList.add(new Enemy());
+										getGameBoard().addGameObject(enemyList.get(enemyList.size()-1),
 											random, 0);
-									enemySpawned = true;
-									gameBoard.updateView();
+										enemySpawned = true;
+										gameBoard.updateView();
+									}
 								}
 							}
 							enemiesToSpawn--;
