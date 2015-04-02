@@ -55,6 +55,7 @@ public class Enemy extends GameObject implements Runnable {
 			gameBoard.updateView();
 			if (newPosY >= gameBoard.getHeight()-2) {
 				((SoZGame) gameBoard.getGame()).gameOver();
+				((SoZGame) gameBoard.getGame()).getActivity().finish();
 			}
 		} else if (gameBoard.getObject(newPosX, newPosY) instanceof Muur) {
 			((Muur) gameBoard.getObject(newPosX, newPosY))

@@ -9,6 +9,7 @@ import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.model.*;
 import nl.saxion.act.playground.view.GameBoardView;
 import nl.voorbeeld.SoZ.objects.*;
+import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -143,7 +144,6 @@ public class SoZGame extends Game {
 
 	public void gameOver() {
 		getGameBoard().removeAllObjects();
-		player = null;
 		
 		while (muurList.size()>0){
 			muurList.remove(0);
@@ -155,6 +155,7 @@ public class SoZGame extends Game {
 		enemyMovementTimer.purge();
 
 		gameOver = true;
+		gameBoard.updateView();
 		
 
 		Intent intent = new Intent(activity, GameOverActivity.class);
@@ -278,6 +279,10 @@ public class SoZGame extends Game {
 
 		Intent intent = new Intent(activity, CutscenePlaceholderActivity.class);
 		activity.beginActivity(intent);
+	}
+	
+	public MainActivity getActivity(){
+		return activity;
 	}
 
 }
