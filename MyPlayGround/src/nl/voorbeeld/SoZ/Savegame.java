@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import android.util.Log;
@@ -28,7 +29,9 @@ public class Savegame {
 
 	private final int maxMuur = 9;
 
-	private int[] muur = new int[maxMuur];
+	private ArrayList <Integer> muur = new ArrayList<Integer>();
+
+
 
 	public Savegame() {
 		level = 1;
@@ -44,11 +47,20 @@ public class Savegame {
 
 		guards = 0;
 		dogs = 0;
-
+		
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+		muur.add(100);
+/*
 		for (int i : muur) {
 			muur[i] = 100;
 			Log.d("lol", ""+muur[i]);
-		}
+		}*/
 	}
 
 	public void leesSaveGameUitFile() {
@@ -184,9 +196,9 @@ public class Savegame {
 		guards = loadedGuards;
 		dogs = loadedGuards;
 
-		for (int i : muur) {
-			muur[i] = loadedMuur[1];
-		}
+	//	for (int i : muur) {
+	//		muur.get(i) = loadedMuur[1];
+	//	}
 		return;
 	}
 
@@ -194,11 +206,10 @@ public class Savegame {
 		File file = new File("savegame.txt");
 		try {
 			PrintWriter out = new PrintWriter(file);
-			out.print(level + "/" + points + "/" + ak + "/" + handgun + "/"
-					+ shotgun + "/" + sniper + "/" + guards + "/" + dogs + "/"
-					+ muur[0] + "/" + muur[1] + "/" + muur[2] + "/" + muur[3]
-					+ "/" + muur[4] + "/" + muur[5] + "/" + muur[6] + "/"
-					+ muur[7] + "/" + muur[8]);
+	//		out.print(level + "/" + points + "/" + ak + "/" + handgun + "/"
+	//				+ shotgun + "/" + sniper + "/" + guards + "/" + dogs + "/"
+	//				+ "/" + muur[4] + "/" + muur[5] + "/" + muur[6] + "/"
+	//				+ muur[7] + "/" + muur[8]);
 		} catch (FileNotFoundException e) {
 
 		}
@@ -354,7 +365,7 @@ public class Savegame {
 	 * mee
 	 */
 	public int getMuur(int xCoordinaat) {
-		return muur[xCoordinaat];
+		return muur.get(xCoordinaat);
 	}
 
 	/**
@@ -363,11 +374,11 @@ public class Savegame {
 	 */
 	public void setMuur(int xCoordinaat, int leven) {
 		if (leven < 0) {
-			muur[xCoordinaat] = 0;
+			muur.set(xCoordinaat, 0);
 		} else if (leven > 100) {
-			muur[xCoordinaat] = 100;
+			muur.set(xCoordinaat, 100);
 		} else {
-			muur[xCoordinaat] = leven;
+			muur.set(xCoordinaat, leven);
 		}
 	}
 }
