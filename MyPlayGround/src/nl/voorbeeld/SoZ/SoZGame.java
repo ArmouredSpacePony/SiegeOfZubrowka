@@ -64,7 +64,7 @@ public class SoZGame extends Game {
 
 		super(new SoZBoard());
 		this.activity = activity;
-		//enemyList.add(enemy1 = new Enemy());
+		// enemyList.add(enemy1 = new Enemy());
 		// enemyList.add(enemy2 = new Enemy());
 		// enemyList.add(enemy3 = new Enemy());
 		// enemyList.add(enemy4 = new Enemy());
@@ -75,7 +75,6 @@ public class SoZGame extends Game {
 		// enemyList.add(enemy9 = new Enemy());
 		// enemyList.add(enemy10 = new Enemy());
 
-		savegame = new Savegame();
 		
 		enemiesToSpawn=(currentLevel*4)+2;
 		
@@ -121,7 +120,7 @@ public class SoZGame extends Game {
 		muurList.add(new Muur());
 		board.addGameObject(muurList.get(muurList.size()-1), 8, board.getHeight() - 2);
 
-
+		savegame = new Savegame();
 		startEnemyMovementTimer();
 		// startEnemySpawnTimer();
 		board.updateView();
