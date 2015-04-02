@@ -31,9 +31,9 @@ public class SoZGame extends Game {
 	//private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
 			//enemy8, enemy9, enemy10;
 	private Savegame savegame;
-
+	
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
-
+	private ArrayList<Muur> muurList = new ArrayList<Muur>();
 	//final Handler ENEMYMOVEMENTHANDLER = new Handler();
 	//final Handler ENEMYSPAWNHANDLER = new Handler();
 
@@ -101,15 +101,24 @@ public class SoZGame extends Game {
 
 		board.addGameObject(player, 4, board.getHeight() - 1);
 
-		board.addGameObject(new Muur(), 0, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 1, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 2, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 3, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 4, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 5, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 6, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 7, board.getHeight() - 2);
-		board.addGameObject(new Muur(), 8, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 0, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 1, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 2, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 3, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 4, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 5, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 6, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 7, board.getHeight() - 2);
+		muurList.add(new Muur());
+		board.addGameObject(muurList.get(muurList.size()-1), 8, board.getHeight() - 2);
 
 
 		startEnemyMovementTimer();
@@ -134,11 +143,19 @@ public class SoZGame extends Game {
 
 	public void gameOver() {
 		getGameBoard().removeAllObjects();
+		player = null;
 		
+		while (muurList.size()>0){
+			muurList.remove(0);
+		}
+		while (enemyList.size()>0){
+			enemyList.remove(0);
+		}
 		enemyMovementTimer.cancel();
+		enemyMovementTimer.purge();
 
 		gameOver = true;
-		player = null;
+		
 
 		Intent intent = new Intent(activity, GameOverActivity.class);
 		activity.beginActivity(intent);
