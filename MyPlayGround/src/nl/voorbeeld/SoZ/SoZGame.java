@@ -228,15 +228,15 @@ public class SoZGame extends Game {
 						for (int i = 0; i < enemyList.size(); i++) {
 							enemyList.get(i).callMovement(gameBoard);
 						}
-						if (enemiesToSpawn > 0) {
-							boolean enemySpawned = false;
-							while (!enemySpawned) {
-								int random = (int) (Math.random() * 9);
-								if (getGameBoard().getObject(random, 0) == null) {
-									if (!gameOver){
+						if (!gameOver) {
+							if (enemiesToSpawn > 0) {
+								boolean enemySpawned = false;
+								while (!enemySpawned) {
+									int random = (int) (Math.random() * 9);
+									if (getGameBoard().getObject(random, 0) == null) {
+
 										enemyList.add(new Enemy());
-										getGameBoard().addGameObject(enemyList.get(enemyList.size()-1),
-											random, 0);
+										getGameBoard().addGameObject(enemyList.get(enemyList.size() - 1),random, 0);
 										enemySpawned = true;
 										gameBoard.updateView();
 									}
