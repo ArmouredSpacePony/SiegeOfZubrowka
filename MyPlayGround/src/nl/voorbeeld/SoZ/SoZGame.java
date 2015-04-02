@@ -17,7 +17,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 
-@SuppressWarnings("unused")
+
 public class SoZGame extends Game {
 	public static final String TAG = "SoZGame";
 	private MainActivity activity;
@@ -28,18 +28,17 @@ public class SoZGame extends Game {
 	public boolean _stop = false;
 	private int enemiesToSpawn;
 
-	private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
-			enemy8, enemy9, enemy10;
+	//private Enemy enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7,
+			//enemy8, enemy9, enemy10;
 	private Savegame savegame;
-	private Muur muur1, muur2, muur3, muur4, muur5, muur6, muur7, muur8, muur9;
 
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
 
-	final Handler ENEMYMOVEMENTHANDLER = new Handler();
-	final Handler ENEMYSPAWNHANDLER = new Handler();
+	//final Handler ENEMYMOVEMENTHANDLER = new Handler();
+	//final Handler ENEMYSPAWNHANDLER = new Handler();
 
 	private Timer enemyMovementTimer;
-	private Timer enemySpawnTimer;
+	//private Timer enemySpawnTimer;
 
 	private int currentLevel;
 
@@ -64,32 +63,24 @@ public class SoZGame extends Game {
 
 		super(new SoZBoard());
 		this.activity = activity;
-		enemyList.add(enemy1 = new Enemy());
-		enemyList.add(enemy2 = new Enemy());
-		enemyList.add(enemy3 = new Enemy());
-		enemyList.add(enemy4 = new Enemy());
-		enemyList.add(enemy5 = new Enemy());
-		enemyList.add(enemy6 = new Enemy());
-		enemyList.add(enemy7 = new Enemy());
-		enemyList.add(enemy8 = new Enemy());
-		enemyList.add(enemy9 = new Enemy());
-		enemyList.add(enemy10 = new Enemy());
-		
-		muur1 = new Muur();
-		muur2 = new Muur();
-		muur3 = new Muur();
-		muur4 = new Muur();
-		muur5 = new Muur();
-		muur6 = new Muur();
-		muur7 = new Muur();
-		muur8 = new Muur();
-		muur9 = new Muur();
+		//enemyList.add(enemy1 = new Enemy());
+		// enemyList.add(enemy2 = new Enemy());
+		// enemyList.add(enemy3 = new Enemy());
+		// enemyList.add(enemy4 = new Enemy());
+		// enemyList.add(enemy5 = new Enemy());
+		// enemyList.add(enemy6 = new Enemy());
+		// enemyList.add(enemy7 = new Enemy());
+		// enemyList.add(enemy8 = new Enemy());
+		// enemyList.add(enemy9 = new Enemy());
+		// enemyList.add(enemy10 = new Enemy());
 
 		savegame = new Savegame();
+		
+		enemiesToSpawn=(currentLevel*4)+2;
+		
+		//if (enemy1 == null) {
 
-		if (enemy1 == null) {
-
-		}
+		//}
 		initNewGame();
 
 		SoZBoardView gameView = activity.getGameBoardView();
@@ -101,8 +92,6 @@ public class SoZGame extends Game {
 				R.raw.ak47_1, 1);
 	}
 
-
-
 	public void initNewGame() {
 		score = 0;
 		gameOver = false;
@@ -112,40 +101,40 @@ public class SoZGame extends Game {
 
 		board.addGameObject(player, 4, board.getHeight() - 1);
 
-		board.addGameObject(muur1, 0, board.getHeight() - 2);
-		board.addGameObject(muur2, 1, board.getHeight() - 2);
-		board.addGameObject(muur3, 2, board.getHeight() - 2);
-		board.addGameObject(muur4, 3, board.getHeight() - 2);
-		board.addGameObject(muur5, 4, board.getHeight() - 2);
-		board.addGameObject(muur6, 5, board.getHeight() - 2);
-		board.addGameObject(muur7, 6, board.getHeight() - 2);
-		board.addGameObject(muur8, 7, board.getHeight() - 2);
-		board.addGameObject(muur9, 8, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 0, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 1, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 2, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 3, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 4, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 5, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 6, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 7, board.getHeight() - 2);
+		board.addGameObject(new Muur(), 8, board.getHeight() - 2);
 
 
 		startEnemyMovementTimer();
-		startEnemySpawnTimer();
+		// startEnemySpawnTimer();
 		board.updateView();
 	}
-
+/*
 	/**
 	 * days=placeholder for days(level)
-	 */
+	 
 	public void spawnEnemies(GameBoard gameboard) {
 		// TODO
 
-		/*
+		
 		 * while (enemiesLeft > 1) { Random r = new Random(); int x =
 		 * r.nextInt(8); int y = 0; GameObject objectAtNewPos =
 		 * gameBoard.getObject(x, y); if (objectAtNewPos != null) { } else {
 		 * board.addGameObject(new Enemy(), x, y); enemiesLeft--; } }
-		 */
+	
 
-	}
+	}*/
 
 	public void gameOver() {
 		getGameBoard().removeAllObjects();
-	
+
 		gameOver = true;
 		player = null;
 
@@ -172,11 +161,11 @@ public class SoZGame extends Game {
 	public Savegame getSavegame() {
 		return savegame;
 	}
-
+/*
 	final Runnable enemySpawnRunnable = new Runnable() {
 		public void run() {
-			//Log.i("Runnable", "Launching enemySpawnRunnable");
-			enemiesToSpawn = (int) ((currentLevel * 4)+2);
+			// Log.i("Runnable", "Launching enemySpawnRunnable");
+			enemiesToSpawn = (int) ((currentLevel * 4) + 2);
 			while (enemiesToSpawn > 1) {
 				Random r = new Random();
 				int x = r.nextInt(8);
@@ -209,7 +198,7 @@ public class SoZGame extends Game {
 	private void UpdateEnemySpawn() {
 
 		ENEMYSPAWNHANDLER.post(enemySpawnRunnable);
-	}
+	}*/
 
 	public void startEnemyMovementTimer() {
 		enemyMovementTimer = new Timer();
@@ -218,14 +207,34 @@ public class SoZGame extends Game {
 		enemyMovementTimer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				UpdateEnemyMovement();
+				activity.runOnUiThread(new Runnable() {
+					public void run() {
+						// Move enemies
+						for (int i = 0; i < enemyList.size(); i++) {
+							enemyList.get(i).callMovement(gameBoard);
+						}
+						if (enemiesToSpawn > 0) {
+							boolean enemySpawned = false;
+							while (!enemySpawned) {
+								int random = (int) (Math.random() * 9);
+								if (getGameBoard().getObject(random, 0) == null) {
+									enemyList.add(new Enemy());
+									getGameBoard().addGameObject(enemyList.get(enemyList.size()-1),
+											random, 0);
+									enemySpawned = true;
+								}
+							}
+							enemiesToSpawn--;
+						}
+					}
+				});
 
-				Log.i("Timer", "enemyMovement timer fired");
+				Log.i("Timer", "enemyMovement and spawning timer fired");
 
 			}
 		}, 600, 1000);
 	}
-
+	/*
 	public void startEnemySpawnTimer() {
 		enemySpawnTimer = new Timer();
 		Log.v("Timer", "EnemySpawning timer created");
@@ -238,7 +247,7 @@ public class SoZGame extends Game {
 			}
 
 		}, 500, 1000);
-	}
+	}*/
 
 	private void levelCompleted(int currentLevel) {
 		getGameBoard().removeAllObjects();

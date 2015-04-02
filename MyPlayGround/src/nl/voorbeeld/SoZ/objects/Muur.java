@@ -22,7 +22,7 @@ public class Muur extends GameObject {
 	
 	public void muurDamaged(GameBoard gameBoard){
 		int leven=((SoZGame)gameBoard.getGame()).getSavegame().getMuur(getPositionX());
-		leven =leven -7;
+		leven = leven -7;
 		((SoZGame)gameBoard.getGame()).getSavegame().setMuur(getPositionX(),leven);
 		
 		if (leven<0){

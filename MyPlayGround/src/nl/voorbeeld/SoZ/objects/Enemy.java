@@ -1,7 +1,5 @@
 package nl.voorbeeld.SoZ.objects;
 
-import java.util.Random;
-
 import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
@@ -12,25 +10,25 @@ public class Enemy extends GameObject implements Runnable {
 	public static final String Enemy1_IMAGE = "civilian3";
 	public static final String Enemy2_IMAGE = "civilian4";
 	public static final String Enemy3_IMAGE = "civilian5";
-	private String currentImage;
+	private int currentImage;
 
 	/**
 	 * Constructs an enemy.
 	 */
 	public Enemy() {
 		super();
-		Random r = new Random();
-		int getal = r.nextInt(3) + 2;
-		currentImage = ("Enemy" + (getal) + "_IMAGE");
+		int getal = (int) (Math.random() * 3);
+
+		currentImage = getal;
 	}
 
 	/** Returns the ImageId of the image to show. */
 
 	@Override
 	public String getImageId() {
-		if (currentImage.equals("civilian3")) {
+		if (currentImage == 1) {
 			return Enemy1_IMAGE;
-		} else if (currentImage.equals("civilian4")) {
+		} else if (currentImage == 2) {
 			return Enemy2_IMAGE;
 		} else {
 			return Enemy3_IMAGE;
@@ -49,22 +47,26 @@ public class Enemy extends GameObject implements Runnable {
 		gameBoard.updateView();
 	}
 
-	public void callMovement(GameBoard gameBoard){
+	public void callMovement(GameBoard gameBoard) {
 
 		Log.d(SoZGame.TAG, "Moved Enemy");
-		
+
 		int newPosX = getPositionX();
-		int newPosY = getPositionY()+1;
-		
-		
-		if(newPosY > 17){
-			((SoZGame)gameBoard.getGame()).gameOver();
+		int newPosY = getPositionY() + 1;
+
+		if (gameBoard.getObject(newPosX, newPosY) == null) {
+			gameBoard.moveObject(this, newPosX, newPosY);
+			// Move player to the new position and redraw the app
+
+			gameBoard.updateView();
+			if (newPosY > gameBoard.getHeight()-2) {
+				((SoZGame) gameBoard.getGame()).gameOver();
+			}
+		} else if (gameBoard.getObject(newPosX, newPosY) instanceof Muur) {
+			((Muur) gameBoard.getObject(newPosX, newPosY))
+					.muurDamaged(gameBoard);
 		}
-		// Move player to the new position and redraw the app
-		gameBoard.moveObject(this, newPosX, newPosY);
-		gameBoard.updateView();
-		
-		
+
 	}
 
 	@Override
