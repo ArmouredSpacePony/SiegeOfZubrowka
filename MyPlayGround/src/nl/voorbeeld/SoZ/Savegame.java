@@ -56,6 +56,7 @@ public class Savegame {
 		muur.add(100);
 		muur.add(100);
 		muur.add(100);
+		muur.add(100);
 /*
 		for (int i : muur) {
 			muur[i] = 100;

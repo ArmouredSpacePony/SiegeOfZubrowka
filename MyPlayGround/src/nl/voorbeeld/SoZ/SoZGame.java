@@ -40,7 +40,7 @@ public class SoZGame extends Game {
 	private Timer enemyMovementTimer;
 	//private Timer enemySpawnTimer;
 
-	private int currentLevel;
+	private int currentLevel=40;
 
 	// init desoundpool om gamesounds te laden
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
@@ -250,7 +250,7 @@ public class SoZGame extends Game {
 				Log.i("Timer", "enemyMovement and spawning timer fired");
 
 			}
-		}, 600, 1000);
+		}, 600, 300);
 	}
 	/*
 	public void startEnemySpawnTimer() {
