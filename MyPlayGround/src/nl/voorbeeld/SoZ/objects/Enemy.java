@@ -39,12 +39,6 @@ public class Enemy extends GameObject implements Runnable {
 	/** Called when the user touched this rock. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		// placeholder until movement functions
-		Log.d(SoZGame.TAG, "Touched Enemy");
-		callMovement(gameBoard);
-
-		// redBlock = !redBlock;
-		gameBoard.updateView();
 	}
 
 	public void callMovement(GameBoard gameBoard) {
@@ -59,7 +53,7 @@ public class Enemy extends GameObject implements Runnable {
 			// Move player to the new position and redraw the app
 
 			gameBoard.updateView();
-			if (newPosY > gameBoard.getHeight()-2) {
+			if (newPosY >= gameBoard.getHeight()-2) {
 				((SoZGame) gameBoard.getGame()).gameOver();
 			}
 		} else if (gameBoard.getObject(newPosX, newPosY) instanceof Muur) {

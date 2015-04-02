@@ -134,6 +134,8 @@ public class SoZGame extends Game {
 
 	public void gameOver() {
 		getGameBoard().removeAllObjects();
+		
+		enemyMovementTimer.cancel();
 
 		gameOver = true;
 		player = null;
@@ -222,6 +224,7 @@ public class SoZGame extends Game {
 									getGameBoard().addGameObject(enemyList.get(enemyList.size()-1),
 											random, 0);
 									enemySpawned = true;
+									gameBoard.updateView();
 								}
 							}
 							enemiesToSpawn--;
