@@ -41,7 +41,7 @@ public class SoZGame extends Game {
 	private Timer enemyMovementTimer;
 	// private Timer enemySpawnTimer;
 
-	private int currentLevel = 40;
+	private int currentLevel =0;
 
 	// init desoundpool om gamesounds te laden
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
@@ -64,6 +64,8 @@ public class SoZGame extends Game {
 
 		super(new SoZBoard(), new Savegame());
 		this.activity = activity;
+		
+		
 		// enemyList.add(enemy1 = new Enemy());
 		// enemyList.add(enemy2 = new Enemy());
 		// enemyList.add(enemy3 = new Enemy());
@@ -75,7 +77,7 @@ public class SoZGame extends Game {
 		// enemyList.add(enemy9 = new Enemy());
 		// enemyList.add(enemy10 = new Enemy());
 
-		enemiesToSpawn = (currentLevel * 4) + 2;
+		enemiesToSpawn = (currentLevel * 4)+1;
 
 		// if (enemy1 == null) {
 
@@ -99,6 +101,7 @@ public class SoZGame extends Game {
 		board.removeAllObjects();
 
 		board.addGameObject(player, 4, board.getHeight() - 1);
+		
 
 		muurList.add(new Muur());
 		board.addGameObject(muurList.get(muurList.size() - 1), 0,
@@ -244,7 +247,7 @@ public class SoZGame extends Game {
 				Log.i("Timer", "enemyMovement and spawning timer fired");
 
 			}
-		}, 600, 300);
+		}, 600, 500);
 	}
 
 	/*

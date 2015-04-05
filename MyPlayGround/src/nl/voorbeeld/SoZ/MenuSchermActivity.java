@@ -52,17 +52,9 @@ public class MenuSchermActivity extends Activity {
 				intent.putExtra(START_GAME_NEW_OF_NIET, true);
 				Log.d("new game", "new game druk");
 				startGame(intent);
-				MediaPlayer mp_xmPlayer2 = new MediaPlayer();
-                mp_xmPlayer2 = MediaPlayer(this, R.raw.music);
-                mp_xmPlayer2.setLooping(true);
 				
 			}
 
-			private MediaPlayer MediaPlayer(OnClickListener onClickListener,
-					int music) {
-				// TODO Auto-generated method stub
-				return null;
-			}
 		});
 	}
 

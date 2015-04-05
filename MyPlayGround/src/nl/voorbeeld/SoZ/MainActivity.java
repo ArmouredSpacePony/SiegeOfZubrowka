@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 	private SoZGame game;
 	private SoZBoardView gameView;
 	private TextView scoreLabel;
+	private MediaPlayer mp_xmPlayer2;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -28,15 +29,11 @@ public class MainActivity extends Activity {
 		// Load main.xml
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-        MediaPlayer mp=new MediaPlayer();  
-        try{  
-            mp.setDataSource("music.mp3");//enter muziek locatie
-            mp.prepare();  
-            mp.start();  
-              
-        }catch(Exception e){e.printStackTrace();}  
 
+		mp_xmPlayer2 = new MediaPlayer();
+		mp_xmPlayer2 = MediaPlayer.create(this, R.raw.music);
+		mp_xmPlayer2.setLooping(true);
+		mp_xmPlayer2.start();
 		// Find some of the user interface elements
 		gameView = (SoZBoardView) findViewById(R.id.game);
 		scoreLabel = (TextView) findViewById(R.id.scoreTextView);
@@ -115,12 +112,11 @@ public class MainActivity extends Activity {
 	}
 
 	public void beginActivity(Intent intent) {
+		mp_xmPlayer2.stop();
 		startActivity(intent);
-		MediaPlayer mp_xmPlayer2 = new MediaPlayer();
-        mp_xmPlayer2 = MediaPlayer.create(this, R.raw.music);
-        mp_xmPlayer2.start();
+
 	}
-	/*public void onResume(){
-		game=new SoZGame(this);
-		}*/
+	/*
+	 * public void onResume(){ game=new SoZGame(this); }
+	 */
 }
