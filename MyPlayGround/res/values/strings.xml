@@ -6,4 +6,6 @@
     <string name="score">Score: </string>
     <string name="title_activity_gameover">Game Over</string>
     <string name="title_activity_menuScherm">menu</string>
+    <string name="title_activity_shop">shop</string>
+    <string name="title_activity_cutscenes">cutscene</string>
   </resources>

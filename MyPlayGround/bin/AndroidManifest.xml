@@ -28,6 +28,23 @@
                 android:value="nl.voorbeeld.coolgame.MainActivity" />
         </activity>
         
+        <activity
+            android:name="nl.voorbeeld.SoZ.CutsceneActivity"
+            android:label="@string/title_activity_cutscenes" >
+			android:parentActivityName="nl.voorbeeld.coolgame.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.voorbeeld.coolgame.cutscenes" />
+        </activity>
+        
+        <activity
+            android:name="nl.voorbeeld.SoZ.ShopActivity"
+            android:label="@string/title_activity_shop" >
+			android:parentActivityName="nl.voorbeeld.coolgame.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nl.voorbeeld.coolgame.shop" />
+        </activity>
         
         <activity
             android:name="nl.voorbeeld.SoZ.MenuSchermActivity"

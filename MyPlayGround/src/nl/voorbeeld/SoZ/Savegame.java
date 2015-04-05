@@ -16,6 +16,8 @@ public class Savegame {
 	private int level;
 
 	private int points;
+	
+	private String equiptWep;
 
 	private boolean ak;
 	private boolean handgun;
@@ -37,6 +39,8 @@ public class Savegame {
 		level = 1;
 
 		points = 0;
+		
+		equiptWep="ak";
 
 		ak = true;
 		handgun = false;
@@ -75,6 +79,7 @@ public class Savegame {
 
 		int loadedLevel;
 		int loadedPoints;
+		String loadedEquiptWep;
 		boolean loadedAk;
 		boolean loadedHandgun;
 		boolean loadedShotgun;
@@ -102,6 +107,23 @@ public class Savegame {
 		} else {
 			return;
 		}
+		if (in.hasNext()){
+			if (in.next().equals("ak")) {
+
+				loadedEquiptWep = "ak";
+			} else if (in.next().equals("handgun")) {
+				loadedEquiptWep = "handgun";
+			} 
+			else if (in.next().equals("shotgun")) {
+				loadedEquiptWep = "shotgun";
+			}
+			else if (in.next().equals("sniper")) {
+				loadedEquiptWep = "sniper";
+			}else {
+				return;
+			}
+		}
+		
 		if (in.hasNext()) {
 			if (in.next().equals("true")) {
 
@@ -207,10 +229,11 @@ public class Savegame {
 		File file = new File("savegame.txt");
 		try {
 			PrintWriter out = new PrintWriter(file);
-	//		out.print(level + "/" + points + "/" + ak + "/" + handgun + "/"
-	//				+ shotgun + "/" + sniper + "/" + guards + "/" + dogs + "/"
-	//				+ "/" + muur[4] + "/" + muur[5] + "/" + muur[6] + "/"
-	//				+ muur[7] + "/" + muur[8]);
+			out.print(level + "/" + points + "/" + equiptWep + "/" + ak + "/" + handgun + "/"
+					+ shotgun + "/" + sniper + "/" + guards + "/" + dogs + "/"
+					+ "/" + muur.get(0)+ "/" + muur.get(1)+ "/" + muur.get(2)+ "/" + muur.get(3)
+					+ "/" + muur.get(4)+ "/" + muur.get(5)+ "/" + muur.get(6)+ "/" + muur.get(7)
+					+ "/" + muur.get(8));
 		} catch (FileNotFoundException e) {
 
 		}
@@ -246,6 +269,16 @@ public class Savegame {
 	 */
 	public void setPoints(int points) {
 		this.points = points;
+	}
+	
+	
+
+	public String getEquiptWep() {
+		return equiptWep;
+	}
+
+	public void setEquiptWep(String equiptWep) {
+		this.equiptWep = equiptWep;
 	}
 
 	/**

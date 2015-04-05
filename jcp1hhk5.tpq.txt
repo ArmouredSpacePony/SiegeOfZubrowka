@@ -1,0 +1,43 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   MyPlayGround/AndroidManifest.xml
+#	modified:   MyPlayGround/bin/AndroidManifest.xml
+#	modified:   MyPlayGround/bin/classes/nl/saxion/act/playground/R$id.class
+#	modified:   MyPlayGround/bin/classes/nl/saxion/act/playground/R$layout.class
+#	modified:   MyPlayGround/bin/classes/nl/saxion/act/playground/R$raw.class
+#	modified:   MyPlayGround/bin/classes/nl/saxion/act/playground/R$string.class
+#	modified:   MyPlayGround/bin/classes/nl/saxion/act/playground/R$styleable.class
+#	new file:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/CutsceneActivity$1.class
+#	new file:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/CutsceneActivity$2.class
+#	new file:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/CutsceneActivity.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/GameOverActivity.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/MainActivity.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/MenuSchermActivity$2.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/MenuSchermActivity$3.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/MenuSchermActivity.class
+#	new file:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/ShopActivity.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/SoZGame$1$1.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/SoZGame$1.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/SoZGame.class
+#	modified:   MyPlayGround/bin/classes/nl/voorbeeld/SoZ/objects/Muur.class
+#	modified:   MyPlayGround/gen/nl/saxion/act/playground/R.java
+#	new file:   MyPlayGround/res/layout/cutscene.xml
+#	new file:   MyPlayGround/res/layout/shop.xml
+#	modified:   MyPlayGround/res/values/strings.xml
+#	new file:   MyPlayGround/src/nl/voorbeeld/SoZ/CutsceneActivity.java
+#	modified:   MyPlayGround/src/nl/voorbeeld/SoZ/MenuSchermActivity.java
+#	new file:   MyPlayGround/src/nl/voorbeeld/SoZ/ShopActivity.java
+#	modified:   MyPlayGround/src/nl/voorbeeld/SoZ/SoZGame.java
+#	modified:   MyPlayGround/src/nl/voorbeeld/SoZ/objects/Muur.java
+#
+# Changes not staged for commit:
+#	deleted:    MyPlayGround/bin/classes/nl/voorbeeld/SoZ/CutscenePlaceholderActivity$1.class
+#	deleted:    MyPlayGround/bin/classes/nl/voorbeeld/SoZ/CutscenePlaceholderActivity.class
+#	deleted:    MyPlayGround/src/nl/voorbeeld/SoZ/CutscenePlaceholderActivity.java
+#
+

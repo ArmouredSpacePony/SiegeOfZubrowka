@@ -14,7 +14,12 @@ public class Muur extends GameObject {
 		return MUUR_IMAGE;
 	}
 	
-	
+	public void muurDamagedCheck(GameBoard gameBoard){
+		int leven=(gameBoard.getGame()).savegame.getMuur(getPositionX());
+		if (leven<0){
+			gameBoard.removeObject(this);
+		}
+	}
 
 	@Override
 	public void onTouched(GameBoard gameBoard) {

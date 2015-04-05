@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MenuSchermActivity extends Activity {
 	private Button continueButton;
@@ -48,11 +49,11 @@ public class MenuSchermActivity extends Activity {
 		newGameButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(dit, MainActivity.class);
+				Intent intent = new Intent(dit, CutsceneActivity.class);
 				intent.putExtra(START_GAME_NEW_OF_NIET, true);
 				Log.d("new game", "new game druk");
 				startGame(intent);
-				
+
 			}
 
 		});
@@ -67,10 +68,16 @@ public class MenuSchermActivity extends Activity {
 		continueButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(dit, MainActivity.class);
-				intent.putExtra(START_GAME_NEW_OF_NIET, false);
-				startGame(intent);
-
+				Savegame savegame = new Savegame();
+				savegame.leesSaveGameUitFile();
+				if (savegame.getLevel() < 2) {
+					Toast.makeText(getApplicationContext(),
+							"geen game gevonden", Toast.LENGTH_LONG).show();
+					;
+				} else {
+					Intent intent = new Intent(dit, ShopActivity.class);
+					startGame(intent);
+				}
 			}
 		});
 	}
