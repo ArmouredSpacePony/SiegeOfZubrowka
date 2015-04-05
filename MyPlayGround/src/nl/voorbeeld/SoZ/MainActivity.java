@@ -2,7 +2,9 @@ package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.R;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +28,14 @@ public class MainActivity extends Activity {
 		// Load main.xml
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+        MediaPlayer mp=new MediaPlayer();  
+        try{  
+            mp.setDataSource("music.mp3");//enter muziek locatie
+            mp.prepare();  
+            mp.start();  
+              
+        }catch(Exception e){e.printStackTrace();}  
 
 		// Find some of the user interface elements
 		gameView = (SoZBoardView) findViewById(R.id.game);
@@ -106,9 +116,11 @@ public class MainActivity extends Activity {
 
 	public void beginActivity(Intent intent) {
 		startActivity(intent);
+		MediaPlayer mp_xmPlayer2 = new MediaPlayer();
+        mp_xmPlayer2 = MediaPlayer.create(this, R.raw.music);
+        mp_xmPlayer2.start();
 	}
 	/*public void onResume(){
 		game=new SoZGame(this);
 		}*/
-
 }

@@ -13,7 +13,7 @@ import android.util.Log;
  * which will be called when the user clicked on a tile which had no game object
  * on it.
  * 
- * @author Paul de Groot
+ * @author Team Wild Ponies
  */
 public abstract class GameBoard extends Observable {
 	private static final String TAG = "Playground";
@@ -117,6 +117,10 @@ public abstract class GameBoard extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+    private void nullify() {
+        // Call garbage collector to clean up memory.
+        System.gc();
+    }
 
 	/**
 	 * Remove an object from the board.

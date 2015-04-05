@@ -8,7 +8,7 @@ import nl.voorbeeld.SoZ.Savegame;
  * You should subclass this for your own game. In that subclass you will keep
  * track of all game-related state, like the score, who's turn it is, etc.
  * 
- * @author Paul de Groot
+ * @author Team Wild Ponies
  */
 public abstract class Game {
 	public static GameBoard gameBoard;
