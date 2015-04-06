@@ -40,7 +40,6 @@ public class ShopActivity extends Activity {
 		ak = (Button) findViewById(R.id.akButton);
 		handgun = (Button) findViewById(R.id.handgunButton);
 		shotgun = (Button) findViewById(R.id.shotgunButton);
-		sniper = (Button) findViewById(R.id.sniperButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
 		muur = (Button) findViewById(R.id.muurButton);
