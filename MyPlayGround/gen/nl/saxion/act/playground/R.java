@@ -28,9 +28,13 @@ containing a value of this type.
         public static final int gameoverfinal=0x7f020006;
         public static final int grasstile1=0x7f020007;
         public static final int ic_launcher=0x7f020008;
-        public static final int logo=0x7f020009;
-        public static final int logo2=0x7f02000a;
-        public static final int player=0x7f02000b;
+        public static final int leaf=0x7f020009;
+        public static final int logo=0x7f02000a;
+        public static final int logo2=0x7f02000b;
+        public static final int player=0x7f02000c;
+        public static final int rock=0x7f02000d;
+        public static final int rock2=0x7f02000e;
+        public static final int wombat=0x7f02000f;
     }
     public static final class id {
         public static final int akButton=0x7f06000b;
@@ -74,14 +78,15 @@ containing a value of this type.
         public static final int music=0x7f040001;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int moveLeft=0x7f050002;
-        public static final int moveRight=0x7f050001;
-        public static final int score=0x7f050003;
-        public static final int title_activity_cutscenes=0x7f050007;
-        public static final int title_activity_gameover=0x7f050004;
-        public static final int title_activity_menuScherm=0x7f050005;
-        public static final int title_activity_shop=0x7f050006;
+        public static final int SiegeOfZubrowka=0x7f050000;
+        public static final int menu=0x7f050001;
+        public static final int moveLeft=0x7f050003;
+        public static final int moveRight=0x7f050002;
+        public static final int score=0x7f050004;
+        public static final int title_activity_cutscenes=0x7f050008;
+        public static final int title_activity_gameover=0x7f050005;
+        public static final int title_activity_menuScherm=0x7f050006;
+        public static final int title_activity_shop=0x7f050007;
     }
     public static final class styleable {
         /** Attributes that can be used with a GameBoardView.

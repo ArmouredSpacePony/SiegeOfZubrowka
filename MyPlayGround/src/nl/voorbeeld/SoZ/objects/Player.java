@@ -1,11 +1,16 @@
 package nl.voorbeeld.SoZ.objects;
+import java.util.ArrayList;
 
-import android.util.Log;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
+import nl.voorbeeld.SoZ.Projectile;
 import nl.voorbeeld.SoZ.SoZGame;
+import android.util.Log;
+import java.awt.Graphics;
 
 public class Player extends GameObject {
+	
+	private static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	public static final String PLAYER_IMAGE = "playertemplate";
 
 	/** Returns the ImageId of the image to show. */
@@ -14,12 +19,12 @@ public class Player extends GameObject {
 		return PLAYER_IMAGE;
 	}
 
-	/** Called when the user touched this wombat. */
+	/** Called when the user moves this player. */
 	@Override
 	public void onTouched(GameBoard gameBoard) {
-		Log.d(SoZGame.TAG, "Touched wombat");
+		Log.d(SoZGame.TAG, "Touched player");
 
-		// Wombats always move a square to the right
+		// Player always move a square to the right
 		int newPosX = getPositionX();
 		int newPosY = getPositionY();
 
@@ -32,19 +37,19 @@ public class Player extends GameObject {
 		GameObject objectAtNewPos = gameBoard.getObject(newPosX, newPosY);
 		if (objectAtNewPos != null) {
 
-			// Wombats can't move through rocks
+			// Player can't move through walls
 			if (objectAtNewPos instanceof Enemy) {
 				return;
 			}
 
-			// Caught a leaf? Score!
+			// Killed a civilian? Score!
 			if (objectAtNewPos instanceof Leaf) {
 				gameBoard.removeObject(objectAtNewPos);
 				((SoZGame) gameBoard.getGame()).changeScore();
 			}
 		}
 
-		// Move wombat to the new position and redraw the app
+		// Move player to the new position and redraw the app
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
@@ -81,6 +86,15 @@ public class Player extends GameObject {
 		// Move player to the new position and redraw the app
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
+	}
+	public static void shoot(GameBoard gameBoard) {
+		Log.d(SoZGame.TAG, "Fired Bullet");
+		Projectile p = new Projectile(1,1);//(locatie,//locatie)
+		projectiles.add(p);
+		gameBoard.updateView();
+	}
+	public static ArrayList getProjectiles() {
+		return projectiles;
 	}
 
 }

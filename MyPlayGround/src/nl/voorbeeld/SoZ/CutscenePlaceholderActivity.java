@@ -35,7 +35,4 @@ public class CutscenePlaceholderActivity extends Activity {
 			}
 		});
 	}
-
-	
-
 }

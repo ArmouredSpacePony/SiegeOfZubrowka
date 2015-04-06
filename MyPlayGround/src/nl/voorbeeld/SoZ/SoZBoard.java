@@ -27,5 +27,6 @@ public class SoZBoard extends GameBoard {
 	public String getBackgroundImg(int mx, int my) {
 		return null;
 	}
+
 	
 }

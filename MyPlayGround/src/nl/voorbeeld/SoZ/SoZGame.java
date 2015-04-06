@@ -1,24 +1,21 @@
 package nl.voorbeeld.SoZ;
 
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Iterator;
 
 import nl.saxion.act.playground.R;
-import nl.saxion.act.playground.model.*;
-import nl.saxion.act.playground.view.GameBoardView;
-import nl.voorbeeld.SoZ.objects.*;
-import android.app.Activity;
+import nl.saxion.act.playground.model.Game;
+import nl.saxion.act.playground.model.GameBoard;
+import nl.voorbeeld.SoZ.objects.Enemy;
+import nl.voorbeeld.SoZ.objects.Muur;
+import nl.voorbeeld.SoZ.objects.Player;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
-import android.view.View;
-import android.media.MediaPlayer;  
 
 public class SoZGame extends Game {
 	public static final String TAG = "SoZGame";
@@ -60,9 +57,9 @@ public class SoZGame extends Game {
 		this.activity = activity;
 		savegame = new Savegame();
 		savegame.leesSaveGameUitFile();
-		currentLevel= savegame.getLevel();
+		currentLevel = savegame.getLevel();
 
-		enemiesToSpawn = (currentLevel * 4)+1;
+		enemiesToSpawn = (currentLevel * 4) + 1;
 
 		initNewGame();
 
@@ -83,7 +80,6 @@ public class SoZGame extends Game {
 		board.removeAllObjects();
 
 		board.addGameObject(player, 4, board.getHeight() - 1);
-		
 
 		muurList.add(new Muur());
 		board.addGameObject(muurList.get(muurList.size() - 1), 0,
@@ -112,8 +108,8 @@ public class SoZGame extends Game {
 		muurList.add(new Muur());
 		board.addGameObject(muurList.get(muurList.size() - 1), 8,
 				board.getHeight() - 2);
-		
-		for(Muur muur : muurList){
+
+		for (Muur muur : muurList) {
 			muur.muurDamagedCheck(board);
 		}
 
@@ -221,5 +217,5 @@ public class SoZGame extends Game {
 	public MainActivity getActivity() {
 		return activity;
 	}
-
+	
 }

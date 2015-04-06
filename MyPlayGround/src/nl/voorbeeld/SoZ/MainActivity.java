@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 		// Load main.xml
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		this.setTitle("SiegeOfZubrowka");
 
 		mp_xmPlayer2 = new MediaPlayer();
 		mp_xmPlayer2 = MediaPlayer.create(this, R.raw.music);

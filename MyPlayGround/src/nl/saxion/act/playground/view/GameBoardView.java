@@ -26,8 +26,7 @@ import android.view.View;
  * This class also handles the resizing of the bitmaps, so the image quality
  * remains good.
  * 
- * @author Jan Stroet
- * @author Paul de Groot
+ * @author Team Wild Ponies
  */
 public abstract class GameBoardView extends View implements Observer {
 	private static final String TAG = "Playground";

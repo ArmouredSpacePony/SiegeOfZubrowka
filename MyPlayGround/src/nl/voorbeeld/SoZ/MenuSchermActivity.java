@@ -51,7 +51,7 @@ public class MenuSchermActivity extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(dit, CutsceneActivity.class);
 				intent.putExtra(START_GAME_NEW_OF_NIET, true);
-				Log.d("new game", "new game druk");
+				Log.d("new game", "new game touch");
 				startGame(intent);
 
 			}
