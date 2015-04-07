@@ -18,7 +18,8 @@
     
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:gravity="right">
 
         <TextView
             android:id="@+id/akTextView"
@@ -36,7 +37,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:gravity="right">
 
         <TextView
             android:id="@+id/shotgunTextView"
@@ -54,13 +56,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:gravity="right">
 
         <TextView
             android:id="@+id/dogsTextView"
@@ -84,7 +81,8 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" 
+        android:gravity="right">
 
         <TextView
             android:id="@+id/guardsTextView"
@@ -108,7 +106,8 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:gravity="right">
 
         <TextView
             android:id="@+id/muurTextView"

@@ -16,9 +16,7 @@ public class ShopActivity extends Activity {
 	ShopActivity dit = this;
 
 	Button ak;
-	Button handgun;
 	Button shotgun;
-	Button sniper;
 	Button dogs;
 	Button guards;
 	Button muur;
@@ -38,12 +36,11 @@ public class ShopActivity extends Activity {
 		savegame.leesSaveGameUitFile();
 
 		ak = (Button) findViewById(R.id.akButton);
-		handgun = (Button) findViewById(R.id.handgunButton);
+
 		shotgun = (Button) findViewById(R.id.shotgunButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
 		muur = (Button) findViewById(R.id.muurButton);
-		next = (Button) findViewById(R.id.nextButton);
 
 		score = (TextView) findViewById(R.id.scoreTextView);
 		dogsText = (TextView) findViewById(R.id.dogsNumberTextView);
@@ -52,9 +49,9 @@ public class ShopActivity extends Activity {
 
 		resetButtonAndTextView();
 		registerOnAkClick();
-		registerOnHandgunClick();
+		//registerOnHandgunClick();
 		registerOnShotgunClick();
-		registerOnSniperClick();
+		//registerOnSniperClick();
 		registerOnDogsClick();
 		registerOnGuardsClick();
 		registerOnMuurClick();
@@ -65,7 +62,7 @@ public class ShopActivity extends Activity {
 	}
 
 	private void resetButtonAndTextView() {
-		score.setText("Score: "+savegame.getPoints());
+		score.setText("Score: " + savegame.getPoints());
 		if (savegame.isAk()) {
 			ak.setText("Equip");
 			if (savegame.getEquiptWep().equals("ak")) {
@@ -82,22 +79,14 @@ public class ShopActivity extends Activity {
 				ak.setClickable(true);
 			}
 		}
-		if (savegame.isHandGun()) {
-			handgun.setText("Equip");
-			if (savegame.getEquiptWep().equals("handgun")) {
-				handgun.setClickable(false);
-				handgun.setText("Equiped");
-			} else {
-				handgun.setClickable(true);
-			}
-		} else {
-			handgun.setText("Buy");
-			if (savegame.getPoints() < 500) {
-				handgun.setClickable(false);
-			} else {
-				handgun.setClickable(true);
-			}
-		}
+		/*
+		 * if (savegame.isHandGun()) { handgun.setText("Equip"); if
+		 * (savegame.getEquiptWep().equals("handgun")) {
+		 * handgun.setClickable(false); handgun.setText("Equiped"); } else {
+		 * handgun.setClickable(true); } } else { handgun.setText("Buy"); if
+		 * (savegame.getPoints() < 500) { handgun.setClickable(false); } else {
+		 * handgun.setClickable(true); } }
+		 */
 		if (savegame.isShotgun()) {
 			shotgun.setText("Equip");
 			if (savegame.getEquiptWep().equals("ak")) {
@@ -113,23 +102,13 @@ public class ShopActivity extends Activity {
 			} else {
 				shotgun.setClickable(true);
 			}
-		}
-		if (savegame.isSniper()) {
-			sniper.setText("Equip");
-			if (savegame.getEquiptWep().equals("ak")) {
-				sniper.setClickable(false);
-				sniper.setText("Equiped");
-			} else {
-				sniper.setClickable(true);
-			}
-		} else {
-			sniper.setText("Buy");
-			if (savegame.getPoints() < 4000) {
-				sniper.setClickable(false);
-			} else {
-				sniper.setClickable(true);
-			}
-		}
+		}/*
+		 * if (savegame.isSniper()) { sniper.setText("Equip"); if
+		 * (savegame.getEquiptWep().equals("ak")) { sniper.setClickable(false);
+		 * sniper.setText("Equiped"); } else { sniper.setClickable(true); } }
+		 * else { sniper.setText("Buy"); if (savegame.getPoints() < 4000) {
+		 * sniper.setClickable(false); } else { sniper.setClickable(true); } }
+		 */
 		if (savegame.getPoints() < 200) {
 			dogs.setClickable(false);
 		} else {
@@ -176,23 +155,18 @@ public class ShopActivity extends Activity {
 		});
 	}
 
-	private void registerOnHandgunClick() {
-
-		handgun.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (((Button) v).getText().equals("Equip")) {
-					savegame.setEquiptWep("handgun");
-				} else {
-					savegame.setHandGun(true);
-					savegame.setPoints(savegame.getPoints() - 500);
-				}
-				resetButtonAndTextView();
-			}
-
-		});
-	}
-
+	/*
+	 * private void registerOnHandgunClick() {
+	 * 
+	 * handgun.setOnClickListener(new View.OnClickListener() {
+	 * 
+	 * @Override public void onClick(View v) { if (((Button)
+	 * v).getText().equals("Equip")) { savegame.setEquiptWep("handgun"); } else
+	 * { savegame.setHandGun(true); savegame.setPoints(savegame.getPoints() -
+	 * 500); } resetButtonAndTextView(); }
+	 * 
+	 * }); }
+	 */
 	private void registerOnShotgunClick() {
 
 		shotgun.setOnClickListener(new View.OnClickListener() {
@@ -210,23 +184,18 @@ public class ShopActivity extends Activity {
 		});
 	}
 
-	private void registerOnSniperClick() {
-
-		sniper.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				if (((Button) v).getText().equals("Equip")) {
-					savegame.setEquiptWep("sniper");
-				} else {
-					savegame.setSniper(true);
-					savegame.setPoints(savegame.getPoints() - 4000);
-				}
-				resetButtonAndTextView();
-			}
-
-		});
-	}
-
+	/*
+	 * private void registerOnSniperClick() {
+	 * 
+	 * sniper.setOnClickListener(new View.OnClickListener() {
+	 * 
+	 * @Override public void onClick(View v) { if (((Button)
+	 * v).getText().equals("Equip")) { savegame.setEquiptWep("sniper"); } else {
+	 * savegame.setSniper(true); savegame.setPoints(savegame.getPoints() -
+	 * 4000); } resetButtonAndTextView(); }
+	 * 
+	 * }); }
+	 */
 	private void registerOnDogsClick() {
 
 		dogs.setOnClickListener(new View.OnClickListener() {
