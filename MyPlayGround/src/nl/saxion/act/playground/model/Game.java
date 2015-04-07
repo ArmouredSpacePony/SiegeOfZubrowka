@@ -1,7 +1,7 @@
 package nl.saxion.act.playground.model;
 
-//import java.awt.Color;
-//import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 import nl.voorbeeld.SoZ.Projectile;
@@ -35,7 +35,7 @@ public abstract class Game {
 		return gameBoard;
 	}
 
-	public void update(/*Graphics g*/) {
+	public void update(Graphics g) {
 		/*if (image == null) {
 			image = createImage(this.getWidth(), this.getHeight());
 			second = image.getGraphics();
@@ -44,14 +44,14 @@ public abstract class Game {
 
 	}
 
-	public void paint(/*Graphics g*/) {
+	public void paint(Graphics g) {
 		//g.drawImage(character, Player.getCenterX() - 61,
 				//Player.getCenterY() - 63, this); locatie pakken
 		ArrayList projectiles = Player.getProjectiles();
 		for (int i = 0; i < projectiles.size(); i++) {
 			Projectile p = (Projectile) projectiles.get(i);
-			//g.setColor(Color.YELLOW);
-			//g.fillRect(p.getX(), p.getY(), 10, 5);
+			g.setColor(Color.YELLOW);
+			g.fillRect(p.getX(), p.getY(), 10, 5);
 		}
 		
 	}
