@@ -1,7 +1,6 @@
 package nl.voorbeeld.SoZ;
 
-import java.awt.Color;
-import java.awt.Graphics;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
