@@ -3,14 +3,11 @@ import java.util.ArrayList;
 
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
-import nl.voorbeeld.SoZ.Projectile;
 import nl.voorbeeld.SoZ.SoZGame;
 import android.util.Log;
-import java.awt.Graphics;
+//import java.awt.Graphics;
 
 public class Player extends GameObject {
-	
-	private static ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 	public static final String PLAYER_IMAGE = "playertemplate";
 
 	/** Returns the ImageId of the image to show. */
@@ -87,14 +84,26 @@ public class Player extends GameObject {
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
-	public static void shoot(GameBoard gameBoard) {
+	public void shoot(GameBoard gameBoard) {
 		Log.d(SoZGame.TAG, "Fired Bullet");
-		Projectile p = new Projectile(1,1);//(locatie,//locatie)
-		projectiles.add(p);
+		Projectile p = new MachinegunBullet();
+		if (gameBoard.getGame().savegame.getEquiptWep().equals("ak")){
+			p = new MachinegunBullet();
+			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+			}else{
+				gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
+				((SoZGame)gameBoard.getGame()).projectileFire(p);
+			}
+		}else if (gameBoard.getGame().savegame.getEquiptWep().equals("shotgun")){
+			p = new ShotgunBullet();
+			
+			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+			}
+			gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
+			((SoZGame)gameBoard.getGame()).projectileFire(p);
+		}
 		gameBoard.updateView();
 	}
-	public static ArrayList getProjectiles() {
-		return projectiles;
-	}
-
 }

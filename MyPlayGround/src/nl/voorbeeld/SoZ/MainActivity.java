@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
 	private SoZBoardView gameView;
 	private TextView scoreLabel;
 	private MediaPlayer mp_xmPlayer2;
+	
 
 	/** Called when the activity is first created. */
 	@Override
@@ -51,6 +52,7 @@ public class MainActivity extends Activity {
 				Toast.LENGTH_SHORT).show();
 		moveLeftButton();
 		moveRightButton();
+		shootButton();
 	}
 
 	/**
@@ -117,7 +119,18 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 
 	}
-	/*
-	 * public void onResume(){ game=new SoZGame(this); }
-	 */
+	
+	private void shootButton() {
+		// Find the 'New Game'-button in the activity
+		final Button button1 = (Button) findViewById(R.id.fireButton);
+
+		// Add a click listener to the button that calls initNewGame()
+		button1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				game.getPlayer().shoot(game.getGameBoard());
+			}
+		});
+	}
+	
 }

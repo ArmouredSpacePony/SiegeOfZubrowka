@@ -60,6 +60,10 @@ public class Enemy extends GameObject implements Runnable {
 		} else if (gameBoard.getObject(newPosX, newPosY) instanceof Muur) {
 			((Muur) gameBoard.getObject(newPosX, newPosY))
 					.muurDamaged(gameBoard);
+		} else if (gameBoard.getObject(newPosX, newPosY) instanceof MachinegunBullet){
+			gameBoard.removeObject(this);
+			((SoZGame)gameBoard.getGame()).RemoveEnemy(this);
+			gameBoard.removeObject(gameBoard.getObject(newPosX, newPosY));
 		}
 
 	}

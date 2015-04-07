@@ -1,7 +1,6 @@
 package nl.voorbeeld.SoZ;
 
-import java.awt.Color;
-import java.awt.Graphics;
+
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -12,6 +11,7 @@ import nl.saxion.act.playground.model.GameBoard;
 import nl.voorbeeld.SoZ.objects.Enemy;
 import nl.voorbeeld.SoZ.objects.Muur;
 import nl.voorbeeld.SoZ.objects.Player;
+import nl.voorbeeld.SoZ.objects.Projectile;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -31,6 +31,8 @@ public class SoZGame extends Game {
 	private ArrayList<Muur> muurList = new ArrayList<Muur>();
 
 	private Timer enemyMovementTimer;
+	
+	private TimerTask shootingTimer;
 
 	private int currentLevel;
 
@@ -193,6 +195,24 @@ public class SoZGame extends Game {
 
 			}
 		}, 600, 1000);
+		
+	}
+	
+	public void projectileFire(final Projectile projectile){
+
+		shootingTimer=new TimerTask() {
+			@Override
+			public void run() {
+				activity.runOnUiThread(new Runnable() {
+					public void run() {
+						projectile.update(gameBoard);
+					}
+				});
+			}
+		};
+					
+		
+		enemyMovementTimer.schedule(shootingTimer, 0, 35);
 	}
 
 	private void levelCompleted(int currentLevel) {
@@ -216,6 +236,10 @@ public class SoZGame extends Game {
 
 	public MainActivity getActivity() {
 		return activity;
+	}
+	
+	public void RemoveEnemy(Enemy enemy){
+		enemyList.remove(enemy);
 	}
 	
 }
