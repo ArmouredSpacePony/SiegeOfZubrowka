@@ -58,8 +58,8 @@ public class Player extends GameObject {
 		if (gameBoard.getGame().savegame.getEquiptWep().equals("ak")){
 			p = new MachinegunBullet();
 			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
-				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 			}else{
 				gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 				((SoZGame)gameBoard.getGame()).projectileFire(p);
@@ -68,8 +68,8 @@ public class Player extends GameObject {
 			p = new ShotgunBullet();
 			
 			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
-				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 			}
 			gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 			((SoZGame)gameBoard.getGame()).projectileFire(p);
