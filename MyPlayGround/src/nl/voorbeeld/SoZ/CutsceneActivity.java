@@ -23,7 +23,7 @@ public class CutsceneActivity extends Activity {
 		setContentView(R.layout.cutscene);
 		view = findViewById(R.id.view);
 		
-		savegame=new Savegame();
+		savegame=new Savegame(dit);
 		
 		
 		Intent intent=getIntent();

@@ -32,7 +32,7 @@ public class ShopActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shop);
-		savegame = new Savegame();
+		savegame = new Savegame(this);
 		savegame.leesSaveGameUitFile();
 		
 		ak = (Button) findViewById(R.id.akButton);

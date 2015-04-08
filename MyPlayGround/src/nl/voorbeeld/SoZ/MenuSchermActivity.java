@@ -67,7 +67,7 @@ public class MenuSchermActivity extends Activity {
 		continueButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Savegame savegame = new Savegame();
+				Savegame savegame = new Savegame((Activity)dit);
 				savegame.leesSaveGameUitFile();
 				if (savegame.getLevel() < 2) {
 					Toast.makeText(getApplicationContext(),

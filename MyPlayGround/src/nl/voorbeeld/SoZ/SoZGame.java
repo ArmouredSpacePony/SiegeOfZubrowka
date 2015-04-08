@@ -56,9 +56,9 @@ public class SoZGame extends Game {
 	public SoZGame(MainActivity activity) {
 
 		
-		super(new SoZBoard(), new Savegame());
+		super(new SoZBoard(), new Savegame(activity));
 		this.activity = activity;
-		savegame = new Savegame();
+		savegame = new Savegame(activity);
 		savegame.leesSaveGameUitFile();
 		
 
@@ -195,7 +195,7 @@ public class SoZGame extends Game {
 							}else{
 								tempInt=enemiesToSpawn;
 							}
-							Toast.makeText(activity.getApplicationContext(),tempInt+"" , Toast.LENGTH_SHORT).show();
+						
 							
 						}
 						gameBoard.updateView();
@@ -270,7 +270,7 @@ public class SoZGame extends Game {
 				Log.i("enemy founs", "fhiewuvigwvyuwej");
 				enemyList.remove(i);
 				
-				savegame.setPoints(savegame.getPoints()+10);
+				savegame.setPoints(savegame.getPoints()+25);
 				
 			}
 			i++;
