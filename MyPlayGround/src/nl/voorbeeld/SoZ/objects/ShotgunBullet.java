@@ -4,9 +4,18 @@ import nl.saxion.act.playground.model.GameBoard;
 import nl.voorbeeld.SoZ.SoZGame;
 
 public class ShotgunBullet extends Projectile {
+	private int enemyPen;
+	
 	public static final String SHOTGUN_IMAGE = "Shotgun";
 	public boolean bestaat= true;
 
+	public ShotgunBullet() {
+		enemyPen=0;
+	}
+	public ShotgunBullet(int i) {
+		enemyPen=i;
+	}
+	
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
@@ -24,6 +33,11 @@ public class ShotgunBullet extends Projectile {
 			((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), newposY));
 			gameBoard.removeObject(gameBoard.getObject(getPositionX(), newposY));
 			gameBoard.moveObject(this, getPositionX(), newposY);
+			enemyPen++;
+			if (enemyPen>=2){
+				gameBoard.removeObject(this);
+				
+			}
 			if (((SoZGame)gameBoard.getGame()).getEnemiesToSpawn()<1&&((SoZGame)gameBoard.getGame()).getEnemiesAantal()<1){
 				((SoZGame)gameBoard.getGame()).levelCompleted();
 			}
