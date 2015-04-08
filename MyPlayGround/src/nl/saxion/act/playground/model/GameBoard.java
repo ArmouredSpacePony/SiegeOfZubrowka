@@ -117,12 +117,7 @@ public abstract class GameBoard extends Observable {
 		setChanged();
 		notifyObservers();
 	}
-    private void nullify() {
-        // Call garbage collector to clean up memory.
-        System.gc();
-    }
-
-	/**
+    /**
 	 * Remove an object from the board.
 	 * 
 	 * @param object  The object to remove from the board.

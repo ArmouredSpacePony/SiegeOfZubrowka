@@ -4,11 +4,9 @@ import nl.saxion.act.playground.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -39,6 +37,7 @@ public class MenuSchermActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				finish();
+				System.exit(0);
 
 			}
 		});

@@ -16,14 +16,14 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.util.Log;
+import android.widget.Toast;
 
 public class SoZGame extends Game {
 	public static final String TAG = "SoZGame";
 	private MainActivity activity;
-	private int score;
+//	private int score;
 	private Player player = new Player();
 	private boolean gameOver = false;
-	private final int MAX_ENEMIES_ON_GAMEBOARD = 8;
 	public boolean _stop = false;
 	private int enemiesToSpawn;
 
@@ -36,6 +36,7 @@ public class SoZGame extends Game {
 	private TimerTask shootingTimer;
 
 	// init desoundpool om gamesounds te laden
+	@SuppressWarnings("deprecation")
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
 			0);
 
@@ -61,7 +62,7 @@ public class SoZGame extends Game {
 		savegame.leesSaveGameUitFile();
 		
 
-		enemiesToSpawn = (savegame.getLevel() * 4) + 1;
+		enemiesToSpawn = (int) Math.pow(((savegame.getLevel() * 12) + 1),1.05);
 
 		initNewGame();
 
@@ -75,7 +76,7 @@ public class SoZGame extends Game {
 	}
 
 	public void initNewGame() {
-		score = 0;
+	//	score = 0;
 		gameOver = false;
 
 		GameBoard board = getGameBoard();
@@ -144,10 +145,10 @@ public class SoZGame extends Game {
 		return gameOver;
 	}
 
-	public void changeScore() {
-		score++;
-		activity.updateScoreLabel(score);
-	}
+	//public void changeScore() {
+	//	score=score+60;
+	//	activity.updateScoreLabel(score);
+	//}
 
 	/**
 	 * @return the player
@@ -188,6 +189,14 @@ public class SoZGame extends Game {
 								}
 							}
 							enemiesToSpawn--;
+							int tempInt;
+							if(enemiesToSpawn<0){
+								tempInt=0;
+							}else{
+								tempInt=enemiesToSpawn;
+							}
+							Toast.makeText(activity.getApplicationContext(),tempInt+"" , Toast.LENGTH_SHORT).show();
+							
 						}
 						gameBoard.updateView();
 					}

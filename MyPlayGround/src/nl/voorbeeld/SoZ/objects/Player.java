@@ -1,6 +1,4 @@
 package nl.voorbeeld.SoZ.objects;
-import java.util.ArrayList;
-
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
 import nl.voorbeeld.SoZ.SoZGame;

@@ -1,12 +1,6 @@
 package nl.saxion.act.playground.model;
 
-//import java.awt.Color;
-//import java.awt.Graphics;
-import java.util.ArrayList;
-
 import nl.voorbeeld.SoZ.Savegame;
-import nl.voorbeeld.SoZ.objects.Player;
-import nl.voorbeeld.SoZ.objects.Projectile;
 
 /**
  * Superclass for all games. 

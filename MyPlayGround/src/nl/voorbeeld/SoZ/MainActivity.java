@@ -2,7 +2,6 @@ package nl.voorbeeld.SoZ;
 
 import nl.saxion.act.playground.R;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -20,7 +19,7 @@ import nl.voorbeeld.SoZ.SoZGame;
 public class MainActivity extends Activity {
 	private SoZGame game;
 	private SoZBoardView gameView;
-	private TextView scoreLabel;
+	//private TextView scoreLabel;
 	private MediaPlayer mp_xmPlayer2;
 	
 
@@ -38,7 +37,7 @@ public class MainActivity extends Activity {
 		mp_xmPlayer2.start();
 		// Find some of the user interface elements
 		gameView = (SoZBoardView) findViewById(R.id.game);
-		scoreLabel = (TextView) findViewById(R.id.scoreTextView);
+		//scoreLabel = (TextView) findViewById(R.id.scoreTextView);
 
 		// Create the game object. This contains all data and functionality
 		// belonging to the game
@@ -61,9 +60,9 @@ public class MainActivity extends Activity {
 	 * @param newScore
 	 *            The new score.
 	 */
-	public void updateScoreLabel(int newScore) {
-		scoreLabel.setText("Score: " + newScore);
-	}
+	//public void updateScoreLabel(int newScore) {
+	//	scoreLabel.setText("Score: " + newScore);
+	//}
 
 	/**
 	 * Returns the view on the game board.

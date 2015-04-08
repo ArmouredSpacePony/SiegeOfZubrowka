@@ -3,11 +3,8 @@ package nl.voorbeeld.SoZ;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import android.util.Log;
 
 public class Savegame {
 
@@ -236,6 +233,7 @@ public class Savegame {
 					+ "/" + muur.get(0)+ "/" + muur.get(1)+ "/" + muur.get(2)+ "/" + muur.get(3)
 					+ "/" + muur.get(4)+ "/" + muur.get(5)+ "/" + muur.get(6)+ "/" + muur.get(7)
 					+ "/" + muur.get(8));
+			out.close();
 		} catch (FileNotFoundException e) {
 
 		}

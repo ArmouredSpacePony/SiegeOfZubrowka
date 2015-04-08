@@ -2,7 +2,6 @@ package nl.voorbeeld.SoZ.objects;
 
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
-import android.util.Log;
 
 public abstract class Projectile extends GameObject {
 
