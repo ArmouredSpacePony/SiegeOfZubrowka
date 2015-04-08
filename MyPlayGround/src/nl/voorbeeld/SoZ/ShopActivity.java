@@ -90,7 +90,7 @@ public class ShopActivity extends Activity {
 		 */
 		if (savegame.isShotgun()) {
 			shotgun.setText("Equip");
-			if (savegame.getEquiptWep().equals("ak")) {
+			if (savegame.getEquiptWep().equals("shotgun")) {
 				shotgun.setClickable(false);
 				shotgun.setText("Equiped");
 			} else {
