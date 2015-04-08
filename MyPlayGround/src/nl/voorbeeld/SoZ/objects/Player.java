@@ -58,18 +58,23 @@ public class Player extends GameObject {
 		if (gameBoard.getGame().savegame.getEquiptWep().equals("ak")){
 			p = new MachinegunBullet();
 			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+				
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				
 			}else{
 				gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 				((SoZGame)gameBoard.getGame()).projectileFire(p);
 			}
 		}else if (gameBoard.getGame().savegame.getEquiptWep().equals("shotgun")){
-			p = new ShotgunBullet();
 			
 			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
-				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				p= new ShotgunBullet(1);
 				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
+				
+			}else{
+				p = new ShotgunBullet();
 			}
 			gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 			((SoZGame)gameBoard.getGame()).projectileFire(p);
