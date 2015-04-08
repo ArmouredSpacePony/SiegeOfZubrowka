@@ -27,14 +27,13 @@ public class SoZGame extends Game {
 	public boolean _stop = false;
 	private int enemiesToSpawn;
 
-	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
+	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>(5);
 	private ArrayList<Muur> muurList = new ArrayList<Muur>();
 
 	private Timer enemyMovementTimer;
+	private Timer bulletTimer;
 	
 	private TimerTask shootingTimer;
-
-	private int currentLevel;
 
 	// init desoundpool om gamesounds te laden
 	private SoundPool soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC,
@@ -55,13 +54,14 @@ public class SoZGame extends Game {
 
 	public SoZGame(MainActivity activity) {
 
+		
 		super(new SoZBoard(), new Savegame());
 		this.activity = activity;
 		savegame = new Savegame();
 		savegame.leesSaveGameUitFile();
-		currentLevel = savegame.getLevel();
+		
 
-		enemiesToSpawn = (currentLevel * 4) + 1;
+		enemiesToSpawn = (savegame.getLevel() * 4) + 1;
 
 		initNewGame();
 
@@ -114,7 +114,8 @@ public class SoZGame extends Game {
 		for (Muur muur : muurList) {
 			muur.muurDamagedCheck(board);
 		}
-
+		enemyMovementTimer = new Timer();
+		bulletTimer = new Timer();
 		startEnemyMovementTimer();
 		// startEnemySpawnTimer();
 		board.updateView();
@@ -156,7 +157,6 @@ public class SoZGame extends Game {
 	}
 
 	public void startEnemyMovementTimer() {
-		enemyMovementTimer = new Timer();
 		Log.i("Timer", "EnemyMovement timer created");
 
 		enemyMovementTimer.schedule(new TimerTask() {
@@ -182,12 +182,14 @@ public class SoZGame extends Game {
 																.size() - 1),
 														random, 0);
 										enemySpawned = true;
-										gameBoard.updateView();
+										Log.i("log enemy spawn", "loloihiybj");
+										
 									}
 								}
 							}
 							enemiesToSpawn--;
 						}
+						gameBoard.updateView();
 					}
 				});
 
@@ -205,33 +207,47 @@ public class SoZGame extends Game {
 			public void run() {
 				activity.runOnUiThread(new Runnable() {
 					public void run() {
-						projectile.update(gameBoard);
+						if (projectile.Bestaat()){
+							projectile.update(gameBoard);
+							Log.i("Timer", "prjectile movement");
+							gameBoard.updateView();
+						}else{
+							Log.i("Timer", "cancel");
+							cancel();
+							enemyMovementTimer.purge();
+						}
+						
 					}
+					
 				});
 			}
 		};
-					
 		
-		enemyMovementTimer.schedule(shootingTimer, 0, 35);
+		bulletTimer.schedule(shootingTimer, 45, 45);
 	}
 
-	private void levelCompleted(int currentLevel) {
+	public void levelCompleted() {
 		getGameBoard().removeAllObjects();
-
-		while (muurList.size() > 0) {
-			muurList.remove(0);
+		int i=0;
+		while (muurList.size() > i) {
+			muurList.remove(i);
+			i++;
 		}
-		while (enemyList.size() > 0) {
-			enemyList.remove(0);
+		int i2=0;
+		while (enemyList.size() > i2) {
+			enemyList.remove(i2);
+			i2++;
 		}
 		enemyMovementTimer.cancel();
 		enemyMovementTimer.purge();
 
 		gameOver = true;
 		gameBoard.updateView();
-
+		savegame.setLevel(savegame.getLevel()+1);
+		savegame.schrijfSaveGame();
 		Intent intent = new Intent(activity, CutsceneActivity.class);
 		activity.beginActivity(intent);
+		activity.finish();
 	}
 
 	public MainActivity getActivity() {
@@ -239,7 +255,23 @@ public class SoZGame extends Game {
 	}
 	
 	public void RemoveEnemy(Enemy enemy){
-		enemyList.remove(enemy);
+		int i =0;
+		while (i< enemyList.size()){
+			if (enemyList.get(i).getId()==enemy.getId()){
+				Log.i("enemy founs", "fhiewuvigwvyuwej");
+				enemyList.remove(i);
+				
+				savegame.setPoints(savegame.getPoints()+10);
+				
+			}
+			i++;
+		}
+		
 	}
-	
+	public int getEnemiesToSpawn(){
+		return enemiesToSpawn;
+	}
+	public int getEnemiesAantal(){
+		return enemyList.size();
+	}
 }

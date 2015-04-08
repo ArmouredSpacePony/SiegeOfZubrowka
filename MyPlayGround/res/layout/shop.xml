@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:gravity="bottom"
     android:orientation="vertical" >
 
     <ImageView
@@ -10,11 +11,25 @@
         android:layout_height="wrap_content"
         android:src="@drawable/shoptitle" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/moneyamount" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:gravity="bottom">>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/moneyamount" />
+
+        <TextView
+            android:id="@+id/scoreTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +59,7 @@
             android:id="@+id/shotgunTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Shotgun: " />
+            android:text="(2000m) Shotgun: " />
 
         <Button
             android:id="@+id/shotgunButton"
@@ -63,7 +78,7 @@
             android:id="@+id/dogsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dogs left:" />
+            android:text="(200m) Dogs left:" />
 
         <TextView
             android:id="@+id/dogsNumberTextView"
@@ -88,7 +103,7 @@
             android:id="@+id/guardsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guards left:" />
+            android:text="(500m) Guards left:" />
 
         <TextView
             android:id="@+id/guardsNumberTextView"
@@ -113,7 +128,7 @@
             android:id="@+id/muurTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Wall left: " />
+            android:text="(1m per unit) Wall left: " />
 
         <TextView
             android:id="@+id/muurHealthTextView"

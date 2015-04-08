@@ -5,7 +5,6 @@ import nl.saxion.act.playground.model.GameObject;
 import android.util.Log;
 
 public abstract class Projectile extends GameObject {
-	
 
 	@Override
 	public abstract String getImageId();
@@ -14,5 +13,7 @@ public abstract class Projectile extends GameObject {
 
 	@Override
 	public abstract void onTouched(GameBoard gameBoard);
+	
+	public abstract boolean Bestaat();
 
 }

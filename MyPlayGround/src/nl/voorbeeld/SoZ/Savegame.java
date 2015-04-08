@@ -79,7 +79,7 @@ public class Savegame {
 
 		int loadedLevel;
 		int loadedPoints;
-		String loadedEquiptWep;
+		String loadedEquiptWep = equiptWep;
 		boolean loadedAk;
 		boolean loadedHandgun;
 		boolean loadedShotgun;
@@ -210,7 +210,9 @@ public class Savegame {
 		level = loadedLevel;
 
 		points = loadedPoints;
-
+		
+		equiptWep =loadedEquiptWep;
+		
 		ak = loadedAk;
 		handgun = loadedHandgun;
 		shotgun = loadedShotgun;

@@ -4,8 +4,10 @@ import nl.saxion.act.playground.R;
 import nl.saxion.act.playground.view.GameBoardView;
 import nl.saxion.act.playground.view.SpriteCache;
 import nl.voorbeeld.SoZ.objects.Enemy;
+import nl.voorbeeld.SoZ.objects.MachinegunBullet;
 import nl.voorbeeld.SoZ.objects.Muur;
 import nl.voorbeeld.SoZ.objects.Player;
+import nl.voorbeeld.SoZ.objects.ShotgunBullet;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -50,6 +52,8 @@ public class SoZBoardView extends GameBoardView {
 		setEmptyTile("empty");
 		
 		// Load the images for the GameObjects
+		
+		
 
 		spriteCache.loadTile(Player.PLAYER_IMAGE, R.drawable.player);
 		spriteCache.loadTile(Enemy.Enemy1_IMAGE, R.drawable.civilian3);
@@ -57,6 +61,7 @@ public class SoZBoardView extends GameBoardView {
 		spriteCache.loadTile(Enemy.Enemy3_IMAGE, R.drawable.civilian5);
 		spriteCache.loadTile(Muur.MUUR_IMAGE, R.drawable.concrete1);
 		// Load the image for the bullet (projectile)
-		spriteCache.loadTile("Projectile", R.drawable.bullet);
+		spriteCache.loadTile(MachinegunBullet.MACHINEGUN_IMAGE, R.drawable.bullet);
+		spriteCache.loadTile(ShotgunBullet.SHOTGUN_IMAGE, R.drawable.bullet);
 	}
 }

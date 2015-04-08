@@ -11,6 +11,8 @@ public class Enemy extends GameObject implements Runnable {
 	public static final String Enemy2_IMAGE = "civilian4";
 	public static final String Enemy3_IMAGE = "civilian5";
 	private int currentImage;
+	private static int lastId=0;
+	private int id;
 
 	/**
 	 * Constructs an enemy.
@@ -19,6 +21,8 @@ public class Enemy extends GameObject implements Runnable {
 		super();
 		int getal = (int) (Math.random() * 3);
 
+		id = lastId;
+		lastId++;
 		currentImage = getal;
 	}
 
@@ -64,6 +68,10 @@ public class Enemy extends GameObject implements Runnable {
 			gameBoard.removeObject(this);
 			((SoZGame)gameBoard.getGame()).RemoveEnemy(this);
 			gameBoard.removeObject(gameBoard.getObject(newPosX, newPosY));
+		} else if (gameBoard.getObject(newPosX, newPosY) instanceof ShotgunBullet){
+			gameBoard.removeObject(this);
+			((SoZGame)gameBoard.getGame()).RemoveEnemy(this);
+			gameBoard.removeObject(gameBoard.getObject(newPosX, newPosY));
 		}
 
 	}
@@ -72,5 +80,9 @@ public class Enemy extends GameObject implements Runnable {
 	public void run() {
 		callMovement(Game.gameBoard);
 
+	}
+	
+	public int getId(){
+		return id;
 	}
 }

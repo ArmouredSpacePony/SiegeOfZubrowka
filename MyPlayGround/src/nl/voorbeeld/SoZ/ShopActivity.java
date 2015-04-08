@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ShopActivity extends Activity {
@@ -21,7 +22,7 @@ public class ShopActivity extends Activity {
 	Button guards;
 	Button muur;
 
-	Button next;
+	ImageView next;
 
 	TextView score;
 	TextView dogsText;
@@ -34,20 +35,21 @@ public class ShopActivity extends Activity {
 		setContentView(R.layout.shop);
 		savegame = new Savegame();
 		savegame.leesSaveGameUitFile();
-
+		
 		ak = (Button) findViewById(R.id.akButton);
 
 		shotgun = (Button) findViewById(R.id.shotgunButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
 		muur = (Button) findViewById(R.id.muurButton);
+		
+		next= (ImageView) findViewById(R.id.imageView3);
 
 		score = (TextView) findViewById(R.id.scoreTextView);
 		dogsText = (TextView) findViewById(R.id.dogsNumberTextView);
 		guardsText = (TextView) findViewById(R.id.guardsNumberTextView);
 		muurText = (TextView) findViewById(R.id.muurHealthTextView);
 
-		resetButtonAndTextView();
 		registerOnAkClick();
 		//registerOnHandgunClick();
 		registerOnShotgunClick();
@@ -62,7 +64,7 @@ public class ShopActivity extends Activity {
 	}
 
 	private void resetButtonAndTextView() {
-		score.setText("Score: " + savegame.getPoints());
+		score.setText("" + savegame.getPoints());
 		if (savegame.isAk()) {
 			ak.setText("Equip");
 			if (savegame.getEquiptWep().equals("ak")) {
