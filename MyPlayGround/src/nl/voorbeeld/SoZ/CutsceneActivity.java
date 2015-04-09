@@ -4,16 +4,19 @@ import nl.saxion.act.playground.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 @SuppressWarnings("unused")
 public class CutsceneActivity extends Activity {
-	private View view;
+	private ImageView cutscene;
 	boolean NewGameOfNiet;
+	private MediaPlayer musicPlayer;
 	CutsceneActivity dit = this;
 	Savegame savegame;
 
@@ -21,32 +24,58 @@ public class CutsceneActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cutscene);
-		view = findViewById(R.id.view);
-		
-		savegame=new Savegame(dit);
-		
-		
-		Intent intent=getIntent();
+		cutscene = (ImageView) findViewById(R.id.cutsceneImage);
+
+		savegame = new Savegame(dit);
+
+		Intent intent = getIntent();
 		intent.getExtras();
-		NewGameOfNiet=intent.getBooleanExtra(MenuSchermActivity.START_GAME_NEW_OF_NIET, false);
-		if(NewGameOfNiet){
+		NewGameOfNiet = intent.getBooleanExtra(
+				MenuSchermActivity.START_GAME_NEW_OF_NIET, false);
+		if (NewGameOfNiet) {
 			savegame.schrijfSaveGame();
-			//TODO play furst cutscene
+			cutscene.setBackgroundResource(R.drawable.cutscene);
 			registerOnViewClickNewGame();
-		}else{
+		} else {
 			savegame.leesSaveGameUitFile();
-			int level = savegame.getLevel();
-			savegame.setLevel(level+1);
-			//TODO play cutscene based on level
-			registerOnViewClick();
-			
+			if (savegame.getLevel() == 2) {
+
+				int level = savegame.getLevel();
+				cutscene.setBackgroundResource(R.drawable.cutscene2);
+				registerOnViewClick();
+			} else if (savegame.getLevel() ==3) {
+				int level = savegame.getLevel();
+
+				// TODO play cutscene based on level
+
+				cutscene.setBackgroundResource(R.drawable.cutscene3);
+
+				registerOnViewClick();
+			} else if (savegame.getLevel() ==4) {
+				int level = savegame.getLevel();
+
+				// TODO play cutscene based on level
+
+				cutscene.setBackgroundResource(R.drawable.cutscene4);
+
+				registerOnViewClick();
+			} else if (savegame.getLevel() >= 5) {
+				int level = savegame.getLevel();
+
+				// TODO play cutscene based on level
+
+				cutscene.setBackgroundResource(R.drawable.victoryscreen);
+
+				registerOnViewClick();
+			}
+
 		}
 	}
-	
+
 	private void registerOnViewClickNewGame() {
 
 		// Add a click listener to the button that calls initNewGame()
-		view.setOnClickListener(new View.OnClickListener() {
+		cutscene.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(dit, MainActivity.class);
@@ -55,10 +84,11 @@ public class CutsceneActivity extends Activity {
 			}
 		});
 	}
+
 	private void registerOnViewClick() {
 
 		// Add a click listener to the button that calls initNewGame()
-		view.setOnClickListener(new View.OnClickListener() {
+		cutscene.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(dit, ShopActivity.class);
@@ -67,7 +97,5 @@ public class CutsceneActivity extends Activity {
 			}
 		});
 	}
-
-	
 
 }

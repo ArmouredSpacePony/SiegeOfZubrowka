@@ -57,17 +57,17 @@ public class SoZBoardView extends GameBoardView {
 		
 
 		spriteCache.loadTile(Player.PLAYER_IMAGE, R.drawable.player);
-		spriteCache.loadTile(Player.PLAYER_IMAGE2, R.drawable.player);
-		spriteCache.loadTile(Player.PLAYER_IMAGE3, R.drawable.player);
+		spriteCache.loadTile(Player.PLAYER_IMAGE2, R.drawable.maincharactersniper);
+		spriteCache.loadTile(Player.PLAYER_IMAGE3, R.drawable.maincharactersniper);
 		spriteCache.loadTile(Enemy.Enemy1_IMAGE, R.drawable.civilian3);
 		spriteCache.loadTile(Enemy.Enemy2_IMAGE, R.drawable.civilian4);
 		spriteCache.loadTile(Enemy.Enemy3_IMAGE, R.drawable.civilian5);
 		spriteCache.loadTile(Muur.MUUR_IMAGE, R.drawable.concrete1);
-		spriteCache.loadTile(Muur.MUUR_IMAGE2, R.drawable.concrete1);
-		spriteCache.loadTile(Muur.MUUR_IMAGE3, R.drawable.concrete1);
+		spriteCache.loadTile(Muur.MUUR_IMAGE2, R.drawable.concretedamaged);
+		spriteCache.loadTile(Muur.MUUR_IMAGE3, R.drawable.concretedestroyed);
 		// Load the image for the bullet (projectile)
 		spriteCache.loadTile(MachinegunBullet.MACHINEGUN_IMAGE, R.drawable.bullet);
-		spriteCache.loadTile(ShotgunBullet.SHOTGUN_IMAGE, R.drawable.bullet);
+		spriteCache.loadTile(ShotgunBullet.SHOTGUN_IMAGE, R.drawable.shotgunbullet);
 		spriteCache.loadTile(SniperBullet.SNIPER_IMAGE, R.drawable.bullet);
 	}
 }

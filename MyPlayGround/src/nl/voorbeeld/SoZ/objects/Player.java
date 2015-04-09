@@ -1,4 +1,5 @@
 package nl.voorbeeld.SoZ.objects;
+import nl.saxion.act.playground.model.Game;
 import nl.saxion.act.playground.model.GameBoard;
 import nl.saxion.act.playground.model.GameObject;
 import nl.voorbeeld.SoZ.SoZGame;
@@ -66,9 +67,11 @@ public class Player extends GameObject {
 		gameBoard.moveObject(this, newPosX, newPosY);
 		gameBoard.updateView();
 	}
+	
 	public void shoot(GameBoard gameBoard) {
 		Log.d(SoZGame.TAG, "Fired Bullet");
-		Projectile p = new MachinegunBullet();
+		Log.i("fireed", ""+gameBoard.getGame().savegame.getEquiptWep());
+		Projectile p = new ShotgunBullet();
 		if (gameBoard.getGame().savegame.getEquiptWep().equals("ak")){
 			((SoZGame)gameBoard.getGame()).getSoundPool().play(SoZGame.AK47_SOUND, 1, 1, 1, 0, 1);
 			p = new MachinegunBullet();
@@ -84,6 +87,7 @@ public class Player extends GameObject {
 				((SoZGame)gameBoard.getGame()).projectileFire(p);
 			}
 		}else if (gameBoard.getGame().savegame.getEquiptWep().equals("shotgun")){
+			Log.i("ejvowvb", "shotgun");
 			((SoZGame)gameBoard.getGame()).getSoundPool().play(SoZGame.ITHACA_SOUND, 1, 1, 1, 0, 1);
 			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Enemy){
 				p= new ShotgunBullet(1);
@@ -117,4 +121,5 @@ public class Player extends GameObject {
 		((SoZGame)gameBoard.getGame()).checkLevelComp();
 		gameBoard.updateView();
 	}
+	
 }

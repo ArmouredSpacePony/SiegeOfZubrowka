@@ -4,6 +4,7 @@ import nl.saxion.act.playground.R;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ public class ShopActivity extends Activity {
 		ak = (Button) findViewById(R.id.akButton);
 
 		shotgun = (Button) findViewById(R.id.shotgunButton);
-		
+
 		sniper = (Button) findViewById(R.id.sniperButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
@@ -55,7 +56,7 @@ public class ShopActivity extends Activity {
 		registerOnAkClick();
 		// registerOnHandgunClick();
 		registerOnShotgunClick();
-		// registerOnSniperClick();
+		registerOnSniperClick();
 		registerOnDogsClick();
 		registerOnGuardsClick();
 		registerOnMuurClick();
@@ -109,7 +110,7 @@ public class ShopActivity extends Activity {
 		}
 		if (savegame.isSniper()) {
 			sniper.setText("Equip");
-			if (savegame.getEquiptWep().equals("ak")) {
+			if (savegame.getEquiptWep().equals("sniper")) {
 				sniper.setClickable(false);
 				sniper.setText("Equiped");
 			} else {
@@ -189,6 +190,7 @@ public class ShopActivity extends Activity {
 			public void onClick(View v) {
 				if (((Button) v).getText().equals("Equip")) {
 					savegame.setEquiptWep("shotgun");
+					Log.i("equip Shotgun", savegame.getEquiptWep());
 				} else {
 					savegame.setShotgun(true);
 					savegame.setPoints(savegame.getPoints() - 2000);
@@ -199,18 +201,24 @@ public class ShopActivity extends Activity {
 		});
 	}
 
-	/*
-	 * private void registerOnSniperClick() {
-	 * 
-	 * sniper.setOnClickListener(new View.OnClickListener() {
-	 * 
-	 * @Override public void onClick(View v) { if (((Button)
-	 * v).getText().equals("Equip")) { savegame.setEquiptWep("sniper"); } else {
-	 * savegame.setSniper(true); savegame.setPoints(savegame.getPoints() -
-	 * 4000); } resetButtonAndTextView(); }
-	 * 
-	 * }); }
-	 */
+	private void registerOnSniperClick() {
+
+		sniper.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (((Button) v).getText().equals("Equip")) {
+					savegame.setEquiptWep("sniper");
+				} else {
+					savegame.setSniper(true);
+					savegame.setPoints(savegame.getPoints() - 10000);
+				}
+				resetButtonAndTextView();
+			}
+
+		});
+	}
+
 	private void registerOnDogsClick() {
 
 		dogs.setOnClickListener(new View.OnClickListener() {
@@ -272,6 +280,7 @@ public class ShopActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(dit, MainActivity.class);
+				savegame.schrijfSaveGame();
 				startActivity(intent);
 				finish();
 

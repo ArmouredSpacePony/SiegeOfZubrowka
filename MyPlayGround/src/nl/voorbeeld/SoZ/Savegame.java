@@ -2,21 +2,11 @@ package nl.voorbeeld.SoZ;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.logging.FileHandler;
-
-import nl.voorbeeld.SoZ.objects.Muur;
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
 
 public class Savegame {
@@ -92,7 +82,6 @@ public class Savegame {
 		String loadedEquiptWep;
 		boolean loadedAk;
 		boolean loadedShotgun;
-		boolean loadedSniper;
 		int loadedGuards;
 		int loadedDogs;
 		ArrayList<Integer> loadedMuuren = new ArrayList<Integer>(9);
@@ -163,20 +152,6 @@ public class Savegame {
 		} else {
 			return;
 		}
-		
-		if (in.hasNext()) {
-			String i = in.next();
-			if(i.equals("true")){
-				Log.i("saveing", "ownes sniper");
-				loadedSniper = true;
-			} else if (i.equals("false")) {
-				loadedSniper = false;
-			} else {
-				return;
-			}
-		} else {
-			return;
-		}
 		/*if (in.hasNext()) {
 			Log.i("saveing", "armor");
 			loadedBodyArmor = Integer.parseInt(in.next());
@@ -223,8 +198,9 @@ public class Savegame {
 		equiptWep = loadedEquiptWep;
 
 		ak = loadedAk;
+		
 		shotgun = loadedShotgun;
-		sniper = loadedSniper;
+		
 
 		guards = loadedGuards;
 		dogs = loadedGuards;
@@ -242,7 +218,7 @@ public class Savegame {
 
 	public void schrijfSaveGame() {
 		String save = (level + "/" + points + "/" + equiptWep + "/" + ak + "/"
-				+ shotgun + "/" + sniper + "/" + guards + "/"
+				+ shotgun + "/" + guards + "/"
 				+ dogs +  "/" + muur.get(0) + "/" + muur.get(1) + "/"
 				+ muur.get(2) + "/" + muur.get(3) + "/" + muur.get(4) + "/"
 				+ muur.get(5) + "/" + muur.get(6) + "/" + muur.get(7) + "/" + muur

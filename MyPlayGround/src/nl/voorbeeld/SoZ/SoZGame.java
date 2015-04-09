@@ -61,7 +61,6 @@ public class SoZGame extends Game {
 		
 		super(new SoZBoard(), new Savegame(activity));
 		this.activity = activity;
-		savegame = new Savegame(activity);
 		savegame.leesSaveGameUitFile();
 		
 
