@@ -44,27 +44,29 @@ containing a value of this type.
         public static final int akButton=0x7f06000c;
         public static final int akTextView=0x7f06000b;
         public static final int continueButton=0x7f060008;
-        public static final int dogsButton=0x7f060011;
-        public static final int dogsNumberTextView=0x7f060010;
-        public static final int dogsTextView=0x7f06000f;
+        public static final int dogsButton=0x7f060013;
+        public static final int dogsNumberTextView=0x7f060012;
+        public static final int dogsTextView=0x7f060011;
         public static final int exitButton=0x7f060009;
         public static final int fireButton=0x7f060004;
         public static final int game=0x7f060002;
-        public static final int guardButton=0x7f060014;
-        public static final int guardsNumberTextView=0x7f060013;
-        public static final int guardsTextView=0x7f060012;
+        public static final int guardButton=0x7f060016;
+        public static final int guardsNumberTextView=0x7f060015;
+        public static final int guardsTextView=0x7f060014;
         public static final int imageView1=0x7f060006;
         public static final int imageView2=0x7f06000a;
-        public static final int imageView3=0x7f060018;
+        public static final int imageView3=0x7f06001a;
         public static final int moveLeftButton=0x7f060003;
         public static final int moveRightButton=0x7f060005;
-        public static final int muurButton=0x7f060017;
-        public static final int muurHealthTextView=0x7f060016;
-        public static final int muurTextView=0x7f060015;
+        public static final int muurButton=0x7f060019;
+        public static final int muurHealthTextView=0x7f060018;
+        public static final int muurTextView=0x7f060017;
         public static final int newGameButton=0x7f060007;
         public static final int scoreTextView=0x7f060001;
         public static final int shotgunButton=0x7f06000e;
         public static final int shotgunTextView=0x7f06000d;
+        public static final int sniperButton=0x7f060010;
+        public static final int sniperTextView=0x7f06000f;
         public static final int view=0x7f060000;
     }
     public static final class layout {
@@ -75,8 +77,11 @@ containing a value of this type.
         public static final int shop=0x7f030004;
     }
     public static final class raw {
-        public static final int ak47_1=0x7f040000;
-        public static final int music=0x7f040001;
+        public static final int ak47fire=0x7f040000;
+        public static final int ithacafire=0x7f040001;
+        public static final int m14fire=0x7f040002;
+        public static final int music=0x7f040003;
+        public static final int walkb01=0x7f040004;
     }
     public static final class string {
         public static final int SiegeOfZubrowka=0x7f050000;

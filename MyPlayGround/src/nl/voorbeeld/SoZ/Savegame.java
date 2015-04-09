@@ -92,6 +92,7 @@ public class Savegame {
 		String loadedEquiptWep;
 		boolean loadedAk;
 		boolean loadedShotgun;
+		boolean loadedSniper;
 		int loadedGuards;
 		int loadedDogs;
 		ArrayList<Integer> loadedMuuren = new ArrayList<Integer>(9);
@@ -162,6 +163,20 @@ public class Savegame {
 		} else {
 			return;
 		}
+		
+		if (in.hasNext()) {
+			String i = in.next();
+			if(i.equals("true")){
+				Log.i("saveing", "ownes sniper");
+				loadedSniper = true;
+			} else if (i.equals("false")) {
+				loadedSniper = false;
+			} else {
+				return;
+			}
+		} else {
+			return;
+		}
 		/*if (in.hasNext()) {
 			Log.i("saveing", "armor");
 			loadedBodyArmor = Integer.parseInt(in.next());
@@ -208,9 +223,8 @@ public class Savegame {
 		equiptWep = loadedEquiptWep;
 
 		ak = loadedAk;
-		
 		shotgun = loadedShotgun;
-		
+		sniper = loadedSniper;
 
 		guards = loadedGuards;
 		dogs = loadedGuards;
@@ -228,7 +242,7 @@ public class Savegame {
 
 	public void schrijfSaveGame() {
 		String save = (level + "/" + points + "/" + equiptWep + "/" + ak + "/"
-				+ shotgun + "/" + guards + "/"
+				+ shotgun + "/" + sniper + "/" + guards + "/"
 				+ dogs +  "/" + muur.get(0) + "/" + muur.get(1) + "/"
 				+ muur.get(2) + "/" + muur.get(3) + "/" + muur.get(4) + "/"
 				+ muur.get(5) + "/" + muur.get(6) + "/" + muur.get(7) + "/" + muur

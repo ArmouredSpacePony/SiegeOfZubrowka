@@ -17,6 +17,7 @@ public class ShopActivity extends Activity {
 
 	Button ak;
 	Button shotgun;
+	Button sniper;
 	Button dogs;
 	Button guards;
 	Button muur;
@@ -34,15 +35,15 @@ public class ShopActivity extends Activity {
 		setContentView(R.layout.shop);
 		savegame = new Savegame(this);
 		savegame.leesSaveGameUitFile();
-		
+
 		ak = (Button) findViewById(R.id.akButton);
 
 		shotgun = (Button) findViewById(R.id.shotgunButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
 		muur = (Button) findViewById(R.id.muurButton);
-		
-		next= (ImageView) findViewById(R.id.imageView3);
+
+		next = (ImageView) findViewById(R.id.imageView3);
 
 		score = (TextView) findViewById(R.id.scoreTextView);
 		dogsText = (TextView) findViewById(R.id.dogsNumberTextView);
@@ -50,9 +51,9 @@ public class ShopActivity extends Activity {
 		muurText = (TextView) findViewById(R.id.muurHealthTextView);
 
 		registerOnAkClick();
-		//registerOnHandgunClick();
+		// registerOnHandgunClick();
 		registerOnShotgunClick();
-		//registerOnSniperClick();
+		// registerOnSniperClick();
 		registerOnDogsClick();
 		registerOnGuardsClick();
 		registerOnMuurClick();
@@ -103,13 +104,24 @@ public class ShopActivity extends Activity {
 			} else {
 				shotgun.setClickable(true);
 			}
-		}/*
-		 * if (savegame.isSniper()) { sniper.setText("Equip"); if
-		 * (savegame.getEquiptWep().equals("ak")) { sniper.setClickable(false);
-		 * sniper.setText("Equiped"); } else { sniper.setClickable(true); } }
-		 * else { sniper.setText("Buy"); if (savegame.getPoints() < 4000) {
-		 * sniper.setClickable(false); } else { sniper.setClickable(true); } }
-		 */
+		}
+		if (savegame.isSniper()) {
+			sniper.setText("Equip");
+			if (savegame.getEquiptWep().equals("ak")) {
+				sniper.setClickable(false);
+				sniper.setText("Equiped");
+			} else {
+				sniper.setClickable(true);
+			}
+		} else {
+			sniper.setText("Buy");
+			if (savegame.getPoints() < 10000) {
+				sniper.setClickable(false);
+			} else {
+				sniper.setClickable(true);
+			}
+		}
+
 		if (savegame.getPoints() < 200) {
 			dogs.setClickable(false);
 		} else {

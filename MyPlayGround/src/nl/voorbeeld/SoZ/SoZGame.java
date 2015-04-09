@@ -22,7 +22,7 @@ public class SoZGame extends Game {
 	public static final String TAG = "SoZGame";
 	private MainActivity activity;
 //	private int score;
-	private Player player = new Player();
+	private Player player = new Player(getGameBoard());
 	private boolean gameOver = false;
 	public boolean _stop = false;
 	private int enemiesToSpawn;
@@ -46,7 +46,10 @@ public class SoZGame extends Game {
 	}
 
 	// laad een sound in
-	public final int AK47_ONE_SHOT_SOUND;
+	public static int AK47_SOUND;
+	public static int ITHACA_SOUND;
+	public static int M14_SOUND;
+	public static int WALK_SOUND;
 
 	/*
 	 * matthijs hier is het example:
@@ -71,8 +74,14 @@ public class SoZGame extends Game {
 		gameView.setGameBoard(gameBoard);
 
 		gameView.setFixedGridSize(gameBoard.getWidth(), gameBoard.getHeight());
-		AK47_ONE_SHOT_SOUND = soundPool.load(activity.getApplicationContext(),
-				R.raw.ak47_1, 1);
+		AK47_SOUND = soundPool.load(activity.getApplicationContext(),
+				R.raw.ak47fire, 1);
+		ITHACA_SOUND = soundPool.load(activity.getApplicationContext(),
+				R.raw.ithacafire, 1);
+		M14_SOUND = soundPool.load(activity.getApplicationContext(),
+				R.raw.m14fire, 1);
+		WALK_SOUND = soundPool.load(activity.getApplicationContext(),
+				R.raw.walkb01, 1);
 	}
 
 	public void initNewGame() {
