@@ -6,7 +6,7 @@ import nl.voorbeeld.SoZ.SoZGame;
 public class SniperBullet extends Projectile {
 	private int enemyPen;
 	
-	public static final String SHOTGUN_IMAGE = "Shotgun";
+	public static final String SNIPER_IMAGE = "Sniper";
 	public boolean bestaat= true;
 
 	public SniperBullet() {
@@ -19,7 +19,7 @@ public class SniperBullet extends Projectile {
 	/** Returns the ImageId of the image to show. */
 	@Override
 	public String getImageId() {
-		return SHOTGUN_IMAGE;
+		return SNIPER_IMAGE;
 	}
 	
 
@@ -34,13 +34,12 @@ public class SniperBullet extends Projectile {
 			gameBoard.removeObject(gameBoard.getObject(getPositionX(), newposY));
 			gameBoard.moveObject(this, getPositionX(), newposY);
 			enemyPen++;
+			((SoZGame)gameBoard.getGame()).checkLevelComp();
 			if (enemyPen>=4){
 				gameBoard.removeObject(this);
 				
 			}
-			if (((SoZGame)gameBoard.getGame()).getEnemiesToSpawn()<1&&((SoZGame)gameBoard.getGame()).getEnemiesAantal()<1){
-				((SoZGame)gameBoard.getGame()).levelCompleted();
-			}
+			
 		} else {
 			gameBoard.moveObject(this, getPositionX(), newposY);
 		}

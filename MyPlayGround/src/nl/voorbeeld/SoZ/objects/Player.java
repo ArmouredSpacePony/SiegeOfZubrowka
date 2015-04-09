@@ -7,8 +7,8 @@ import android.util.Log;
 
 public class Player extends GameObject {
 	public static final String PLAYER_IMAGE = "playertemplate";
-	public static final String PLAYER_IMAGE2 = "playertemplate";
-	public static final String PLAYER_IMAGE3 = "playertemplate";
+	public static final String PLAYER_IMAGE2 = "playertemplate2";
+	public static final String PLAYER_IMAGE3 = "playertemplate3";
 	private String plaatje;
 	
 	public Player(GameBoard gameBoard){
@@ -72,22 +72,26 @@ public class Player extends GameObject {
 		if (gameBoard.getGame().savegame.getEquiptWep().equals("ak")){
 			((SoZGame)gameBoard.getGame()).getSoundPool().play(SoZGame.AK47_SOUND, 1, 1, 1, 0, 1);
 			p = new MachinegunBullet();
-			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Enemy){
 				
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				
-			}else{
+			}else if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Projectile){
+				return;
+			} else {
 				gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 				((SoZGame)gameBoard.getGame()).projectileFire(p);
 			}
 		}else if (gameBoard.getGame().savegame.getEquiptWep().equals("shotgun")){
 			((SoZGame)gameBoard.getGame()).getSoundPool().play(SoZGame.ITHACA_SOUND, 1, 1, 1, 0, 1);
-			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Enemy){
 				p= new ShotgunBullet(1);
 				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				
+			}else if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Projectile){
+				return;
 			}else{
 				p = new ShotgunBullet();
 			}
@@ -97,17 +101,20 @@ public class Player extends GameObject {
 		}else if (gameBoard.getGame().savegame.getEquiptWep().equals("sniper")){
 			((SoZGame)gameBoard.getGame()).getSoundPool().play(SoZGame.M14_SOUND, 1, 1, 1, 0, 1);
 			
-			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)!=null){
+			if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Enemy){
 				p= new SniperBullet(1);
 				gameBoard.removeObject(gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				((SoZGame)gameBoard.getGame()).RemoveEnemy((Enemy) gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3));
 				
+			}else if (gameBoard.getObject(getPositionX(), gameBoard.getHeight()-3)instanceof Projectile){
+				return;
 			}else{
 				p = new SniperBullet();
 			}
 			gameBoard.addGameObject(p, getPositionX(), gameBoard.getHeight()-3);
 			((SoZGame)gameBoard.getGame()).projectileFire(p);
 		}
+		((SoZGame)gameBoard.getGame()).checkLevelComp();
 		gameBoard.updateView();
 	}
 }

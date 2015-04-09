@@ -34,13 +34,12 @@ public class ShotgunBullet extends Projectile {
 			gameBoard.removeObject(gameBoard.getObject(getPositionX(), newposY));
 			gameBoard.moveObject(this, getPositionX(), newposY);
 			enemyPen++;
+			((SoZGame)gameBoard.getGame()).checkLevelComp();
 			if (enemyPen>=2){
 				gameBoard.removeObject(this);
 				
 			}
-			if (((SoZGame)gameBoard.getGame()).getEnemiesToSpawn()<1&&((SoZGame)gameBoard.getGame()).getEnemiesAantal()<1){
-				((SoZGame)gameBoard.getGame()).levelCompleted();
-			}
+			
 		} else {
 			gameBoard.moveObject(this, getPositionX(), newposY);
 		}

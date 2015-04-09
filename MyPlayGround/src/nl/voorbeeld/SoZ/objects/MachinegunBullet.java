@@ -24,9 +24,7 @@ public class MachinegunBullet extends Projectile {
 			gameBoard.removeObject(this);
 			gameBoard.removeObject(gameBoard.getObject(getPositionX(), newposY));
 			bestaat =false;
-			if (((SoZGame)gameBoard.getGame()).getEnemiesToSpawn()<1&&((SoZGame)gameBoard.getGame()).getEnemiesAantal()<1){
-				((SoZGame)gameBoard.getGame()).levelCompleted();
-			}
+			((SoZGame)gameBoard.getGame()).checkLevelComp();
 		}else{
 			gameBoard.moveObject(this, getPositionX(), newposY);
 		}

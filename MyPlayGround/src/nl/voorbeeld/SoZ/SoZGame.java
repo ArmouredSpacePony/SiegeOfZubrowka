@@ -243,8 +243,14 @@ public class SoZGame extends Game {
 		
 		bulletTimer.schedule(shootingTimer, 45, 45);
 	}
+	
+	public void checkLevelComp(){
+		if (getEnemiesAantal()<=0&&enemiesToSpawn<=0){
+			levelCompleted();
+		}
+	}
 
-	public void levelCompleted() {
+	private void levelCompleted() {
 		getGameBoard().removeAllObjects();
 		int i=0;
 		while (muurList.size() > i) {

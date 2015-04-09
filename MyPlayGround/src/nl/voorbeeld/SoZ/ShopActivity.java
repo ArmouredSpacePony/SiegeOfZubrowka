@@ -39,6 +39,8 @@ public class ShopActivity extends Activity {
 		ak = (Button) findViewById(R.id.akButton);
 
 		shotgun = (Button) findViewById(R.id.shotgunButton);
+		
+		sniper = (Button) findViewById(R.id.sniperButton);
 		dogs = (Button) findViewById(R.id.dogsButton);
 		guards = (Button) findViewById(R.id.guardButton);
 		muur = (Button) findViewById(R.id.muurButton);
@@ -139,7 +141,7 @@ public class ShopActivity extends Activity {
 			i++;
 		}
 
-		if (savegame.getPoints() < destroidMuur || destroidMuur == 0) {
+		if ((savegame.getPoints() < destroidMuur) || (destroidMuur == 0)) {
 			muur.setClickable(false);
 		} else {
 			muur.setClickable(true);
@@ -249,11 +251,12 @@ public class ShopActivity extends Activity {
 				while (i < 9) {
 					int levenErBij = 100 - savegame.getMuur(i);
 					savegame.setPoints(savegame.getPoints() - levenErBij);
+					i++;
 				}
 
 				int i2 = 0;
 				while (i2 < 9) {
-					savegame.setMuur(1, 100);
+					savegame.setMuur(i2, 100);
 					i2++;
 				}
 

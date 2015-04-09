@@ -6,17 +6,25 @@ import nl.saxion.act.playground.model.GameObject;
 
 public class Muur extends GameObject {
 	public static final String MUUR_IMAGE="muur";
-	
+	public static final String MUUR_IMAGE2="muur2";
+	public static final String MUUR_IMAGE3="muur3";
+	private String plaatje = MUUR_IMAGE;
 
 	@Override
 	public String getImageId() {
-		return MUUR_IMAGE;
+		return plaatje;
 	}
 	
 	public void muurDamagedCheck(GameBoard gameBoard){
 		int leven=(gameBoard.getGame()).savegame.getMuur(getPositionX());
 		if (leven<0){
 			gameBoard.removeObject(this);
+		}else if(leven<15){
+			plaatje = MUUR_IMAGE3;
+		}else if (leven <=60){
+			plaatje = MUUR_IMAGE2;
+		}else{
+			plaatje = MUUR_IMAGE;
 		}
 	}
 
@@ -33,6 +41,12 @@ public class Muur extends GameObject {
 		
 		if (leven<0){
 			gameBoard.removeObject(this);
+		}else if(leven<15){
+			plaatje = MUUR_IMAGE3;
+		}else if (leven <=60){
+			plaatje = MUUR_IMAGE2;
+		}else{
+			plaatje = MUUR_IMAGE;
 		}
 	}
 
